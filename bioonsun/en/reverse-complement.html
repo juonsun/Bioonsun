@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/bioonsun/favicon.svg" type="image/svg+xml">
+<title>Reverse Complement Calculator — DNA/RNA Sequence Tool | BioOnSun</title>
+<meta name="description" content="Compute the reverse complement of a DNA/RNA sequence for free. Supports IUPAC ambiguity codes, FASTA format, and mixed case — all computed instantly in your browser.">
+<link rel="canonical" href="https://juonsun.com/bioonsun/en/reverse-complement.html">
+<link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/reverse-complement.html">
+<link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/reverse-complement.html">
+<link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/reverse-complement.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a reverse complement?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It is the sequence you get by reversing the order of a DNA/RNA sequence (3' to 5') and swapping each base for its complementary base. It represents the opposite strand of a DNA double helix read 5' to 3'." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool support IUPAC ambiguity codes?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. R/Y, K/M, B/V, and D/H are converted to their matching codes, while S, W, and N remain unchanged." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my sequence data sent to a server?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. All computation happens locally in your browser using JavaScript. Nothing is transmitted to or stored on any server." }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="brand-logo">B</span>Bio<span class="brand-dot">On</span>Sun</a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="reverse-complement.html" class="active">Reverse Complement</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <div class="lang-switch">
+        <a href="../reverse-complement.html">KO</a>
+        <a href="reverse-complement.html" class="active">EN</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding-bottom: 20px;">
+    <div class="container">
+      <span class="pill">DNA / RNA sequence tool</span>
+      <h1>Reverse Complement Calculator</h1>
+      <p class="lead">Paste a DNA or RNA sequence to instantly get its reverse complement. IUPAC ambiguity codes, FASTA format, and letter case are all preserved.</p>
+    </div>
+  </section>
+
+  <section style="padding-top: 0; border-top: none;">
+    <div class="container">
+      <div class="tool-app" data-tool="reverse-complement" data-i18n="en" data-sample="&gt;demo_sequence&#10;ATGCGTACGTTAGCWSKMBDHVNatgcgtacgttagc">
+        <div class="mode-tabs" role="tablist" aria-label="Conversion mode">
+          <button type="button" class="mode-tab active" data-mode="revcomp">Reverse Complement</button>
+          <button type="button" class="mode-tab" data-mode="reverse">Reverse only</button>
+          <button type="button" class="mode-tab" data-mode="complement">Complement only</button>
+        </div>
+
+        <label class="field-label" for="rc-input">
+          <span>Input sequence (DNA/RNA, FASTA supported)</span>
+        </label>
+        <textarea id="rc-input" class="seq-box" data-role="input" spellcheck="false" placeholder="e.g. ATGCGTACGTTAGC or a FASTA block with a &gt;header"></textarea>
+
+        <div class="btn-row">
+          <button type="button" class="btn" data-role="sample">Load sample sequence</button>
+          <button type="button" class="btn btn-ghost" data-role="clear">Clear</button>
+        </div>
+
+        <label class="field-label" for="rc-output">
+          <span>Result</span>
+        </label>
+        <textarea id="rc-output" class="seq-box" data-role="output" readonly spellcheck="false"></textarea>
+
+        <div class="btn-row">
+          <button type="button" class="btn btn-primary" data-role="copy">Copy result</button>
+          <button type="button" class="btn" data-role="download">Download as FASTA</button>
+        </div>
+
+        <div class="stats-row">
+          <span>Length: <strong data-role="stat-length">0</strong> nt</span>
+          <span>GC content: <strong data-role="stat-gc">--</strong></span>
+        </div>
+
+        <div class="privacy-note">
+          🔒 Everything is computed right here in your browser. Your sequence is never sent to or stored on a server.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="ad-slot">Ad placement (to be added after Google AdSense approval)</div>
+  </div>
+
+  <section>
+    <div class="container prose">
+      <h2>What is a reverse complement?</h2>
+      <p>DNA is a double helix made of two antiparallel strands. If you know the sequence of one strand, the <strong>reverse complement</strong> gives you the other strand, read 5' to 3'. It's computed in two steps.</p>
+      <ol>
+        <li><strong>Reverse</strong>: read the sequence backwards, from the last letter to the first.</li>
+        <li><strong>Complement</strong>: swap each base for its pairing base (A↔T, C↔G; RNA's U pairs with A).</li>
+      </ol>
+      <p>For example, the reverse complement of <code>5'-ATGC-3'</code> is <code>5'-GCAT-3'</code>. This tool performs both steps at once, or you can view the Reverse-only or Complement-only result separately.</p>
+
+      <h2>When would you use this?</h2>
+      <ul>
+        <li>Designing a reverse primer for PCR and checking its sequence</li>
+        <li>Cloning work or restriction site checks that require the opposite strand</li>
+        <li>Lining up two sequences by orientation before an alignment</li>
+        <li>Coursework or lab exercises that ask you to verify a reverse complement</li>
+      </ul>
+
+      <h2>IUPAC ambiguity code support</h2>
+      <p>Ambiguity codes are converted according to the standard IUPAC rules below. Letter case is preserved exactly as entered.</p>
+      <table class="iupac">
+        <thead>
+          <tr><th>Code</th><th>Meaning</th><th>Complement</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A</td><td>Adenine</td><td>T</td></tr>
+          <tr><td>T / U</td><td>Thymine / Uracil</td><td>A</td></tr>
+          <tr><td>C</td><td>Cytosine</td><td>G</td></tr>
+          <tr><td>G</td><td>Guanine</td><td>C</td></tr>
+          <tr><td>R</td><td>A or G</td><td>Y</td></tr>
+          <tr><td>Y</td><td>C or T</td><td>R</td></tr>
+          <tr><td>S</td><td>C or G</td><td>S (same)</td></tr>
+          <tr><td>W</td><td>A or T</td><td>W (same)</td></tr>
+          <tr><td>K</td><td>G or T</td><td>M</td></tr>
+          <tr><td>M</td><td>A or C</td><td>K</td></tr>
+          <tr><td>B</td><td>C, G, or T</td><td>V</td></tr>
+          <tr><td>V</td><td>A, C, or G</td><td>B</td></tr>
+          <tr><td>D</td><td>A, G, or T</td><td>H</td></tr>
+          <tr><td>H</td><td>A, C, or T</td><td>D</td></tr>
+          <tr><td>N</td><td>Any base</td><td>N (same)</td></tr>
+        </tbody>
+      </table>
+
+      <h2>FASTA format support</h2>
+      <p>Paste an input containing FASTA headers (lines starting with <code>&gt;</code>) and the header is kept unchanged while only the sequence body is reverse-complemented and re-wrapped at 60 characters per line. Multi-sequence (multi-FASTA) input is handled record by record.</p>
+
+      <h2>How to use it</h2>
+      <ol>
+        <li>Paste your DNA/RNA sequence (or FASTA block) into the input box above.</li>
+        <li>Choose Reverse only, Complement only, or Reverse Complement from the tabs if needed.</li>
+        <li>Copy the result directly, or download it as a FASTA file.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose">
+      <h2>Frequently asked questions</h2>
+      <details class="faq-item" open>
+        <summary>What's the difference between reverse and complement?</summary>
+        <p>Reverse only flips the order of the sequence. Complement only swaps each base for its pairing base, keeping the order unchanged. Reverse complement applies both.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I enter RNA sequences (with U)?</summary>
+        <p>Yes. U is treated the same as T and pairs with A. The output is returned in DNA notation (A/T/G/C).</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can my input include spaces, line breaks, or numbers?</summary>
+        <p>Any character that isn't a recognized nucleotide letter (spaces, digits, symbols) is left unchanged. For plain text without a FASTA header, the whole string is reversed as-is.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is my sequence stored or sent anywhere?</summary>
+        <p>No. This tool makes no server requests — everything is computed in your browser with JavaScript, and no sequence data is ever transmitted to or stored on BioOnSun's servers.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I change the 60-character line wrap width?</summary>
+        <p>The current version wraps at 60 characters per line, following common FASTA convention. If you need a different width, let us know via the contact page.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>BioOnSun</h4>
+        <p class="small">A free collection of online bioinformatics tools. All calculations run in your browser only — sequence data is never sent to or stored on our servers.</p>
+      </div>
+      <div>
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="reverse-complement.html">Reverse Complement</a></li>
+          <li><span class="small">GC Content Calculator (soon)</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Info</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-portal-link"><a href="/">← See other services on juonsun.com</a></div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 BioOnSun (juonsun.com/bioonsun). All rights reserved.</span>
+      <span class="updated-note">Last updated: July 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/reverse-complement.js"></script>
+</body>
+</html>

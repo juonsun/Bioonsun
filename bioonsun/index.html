@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/bioonsun/favicon.svg" type="image/svg+xml">
+<title>BioOnSun — 무료 온라인 생물정보학(Bioinformatics) 도구 모음</title>
+<meta name="description" content="DNA/RNA Reverse Complement 계산 등 무료 온라인 생물정보학 도구 모음. 회원가입 없이 브라우저에서 바로 사용하고, 서열 데이터는 서버로 전송되지 않습니다.">
+<link rel="canonical" href="https://juonsun.com/bioonsun/">
+<link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/">
+<link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/">
+<link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="brand-logo">B</span>Bio<span class="brand-dot">On</span>Sun</a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html" class="active">홈</a>
+      <a href="reverse-complement.html">Reverse Complement</a>
+      <a href="about.html">소개</a>
+      <a href="contact.html">문의</a>
+      <div class="lang-switch">
+        <a href="index.html" class="active">KO</a>
+        <a href="en/index.html">EN</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <span class="pill">무료 · 회원가입 불필요 · 브라우저에서 즉시 계산</span>
+      <h1>연구와 학습을 위한<br>생물정보학(Bioinformatics) 도구 모음</h1>
+      <p class="lead">BioOnSun은 DNA·RNA 서열을 다루는 연구자, 학생, 취미 생물학자를 위한 무료 온라인 도구 모음입니다. 입력한 서열은 서버로 전송되지 않고 여러분의 브라우저 안에서만 계산됩니다.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="text-center">도구 모음</h2>
+      <div class="tool-grid">
+        <a class="tool-card" href="reverse-complement.html">
+          <h3><span class="icon">⇄</span>Reverse Complement</h3>
+          <p>DNA/RNA 서열의 역상보 서열을 계산합니다. IUPAC 모호성 코드, FASTA 형식, 대소문자를 모두 지원합니다.</p>
+        </a>
+        <div class="tool-card disabled">
+          <span class="badge-soon">준비 중</span>
+          <h3><span class="icon">%</span>GC 함량 계산기</h3>
+          <p>서열의 GC 함량과 염기 조성을 빠르게 계산합니다.</p>
+        </div>
+        <div class="tool-card disabled">
+          <span class="badge-soon">준비 중</span>
+          <h3><span class="icon">▲</span>DNA → 단백질 번역기</h3>
+          <p>코딩 서열을 아미노산 서열로 번역합니다.</p>
+        </div>
+        <div class="tool-card disabled">
+          <span class="badge-soon">준비 중</span>
+          <h3><span class="icon">✎</span>FASTA 정리 도구</h3>
+          <p>줄바꿈, 공백, 헤더 형식을 정리해 깔끔한 FASTA로 만듭니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="ad-slot">광고 영역 (Google AdSense 승인 후 삽입 예정)</div>
+  </div>
+
+  <section>
+    <div class="container prose">
+      <h2>BioOnSun을 만든 이유</h2>
+      <p>생물정보학 실험을 하다 보면 서열 하나를 뒤집고 상보 서열로 바꾸는, 아주 사소하지만 반복적인 작업이 자주 필요합니다. 기존 도구들은 광고가 지나치게 많거나, 회원가입을 요구하거나, 모바일에서 사용하기 불편한 경우가 많았습니다. BioOnSun은 이런 작은 불편함을 해결하기 위해 시작된 프로젝트입니다.</p>
+      <p>모든 계산 로직은 서버가 아니라 여러분의 브라우저(JavaScript)에서 직접 실행됩니다. 즉, 입력한 서열 데이터가 어디로도 전송되지 않으며, 민감한 미공개 연구 데이터를 다룰 때도 안심하고 사용할 수 있습니다.</p>
+      <h2>이런 분들께 추천합니다</h2>
+      <ul>
+        <li>실험 설계 중 프라이머나 서열의 역상보 서열이 빠르게 필요한 연구자</li>
+        <li>분자생물학·생물정보학 수업 과제를 하는 학생</li>
+        <li>클로닝, PCR 프라이머 설계 등을 취미로 다루는 분</li>
+        <li>설치 없이 브라우저만으로 서열을 다루고 싶은 모든 분</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>BioOnSun</h4>
+        <p class="small">무료 온라인 생물정보학 도구 모음입니다. 모든 계산은 여러분의 브라우저 안에서만 이루어지며, 입력한 서열 데이터는 서버로 전송되거나 저장되지 않습니다.</p>
+      </div>
+      <div>
+        <h4>도구</h4>
+        <ul>
+          <li><a href="reverse-complement.html">Reverse Complement</a></li>
+          <li><span class="small">GC 함량 계산기 (준비 중)</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>정보</h4>
+        <ul>
+          <li><a href="about.html">소개</a></li>
+          <li><a href="privacy.html">개인정보 처리방침</a></li>
+          <li><a href="contact.html">문의하기</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-portal-link"><a href="/">← juonsun.com의 다른 서비스 보기</a></div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 BioOnSun (juonsun.com/bioonsun). All rights reserved.</span>
+      <span class="updated-note">최종 업데이트: 2026년 7월</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
