@@ -63,8 +63,8 @@
     document.body.removeChild(ta);
   };
 
-  window.BioOnSun.download = function (filename, text) {
-    var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  window.BioOnSun.download = function (filename, text, mimeType) {
+    var blob = new Blob([text], { type: mimeType || 'text/plain;charset=utf-8' });
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
     a.href = url;

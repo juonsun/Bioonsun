@@ -32,8 +32,62 @@
       .replace(/"/g, '&quot;');
   }
 
+  // ---- Visual-width-aware padding ------------------------------------
+  // Row labels can contain Hangul/CJK text, which renders roughly twice as
+  // wide as a Latin character even in a "monospace" font (most monospace
+  // fonts fall back to a full-width CJK glyph for these code points). Padding
+  // by String.length alone therefore misaligns the columns below whenever a
+  // label contains non-Latin characters. These helpers pad by *visual*
+  // column width instead, so the sequence/position columns line up both on
+  // screen and when the plain-text report is viewed elsewhere in a
+  // monospace font.
+  var WIDE_RANGES = [
+    [0x1100, 0x115F], [0x2E80, 0x2EFF], [0x2F00, 0x2FDF], [0x3000, 0x303F],
+    [0x3040, 0x30FF], [0x3100, 0x312F], [0x3130, 0x318F], [0x3190, 0x31BF],
+    [0x31C0, 0x31EF], [0x31F0, 0x31FF], [0x3200, 0x32FF], [0x3300, 0x33FF],
+    [0x3400, 0x4DBF], [0x4E00, 0x9FFF], [0xA960, 0xA97F], [0xAC00, 0xD7A3],
+    [0xF900, 0xFAFF], [0xFE30, 0xFE4F], [0xFF00, 0xFF60], [0xFFE0, 0xFFE6]
+  ];
+  function isWideCodePoint(code) {
+    for (var i = 0; i < WIDE_RANGES.length; i++) {
+      if (code >= WIDE_RANGES[i][0] && code <= WIDE_RANGES[i][1]) return true;
+    }
+    return false;
+  }
+  function charWidth(ch) {
+    return isWideCodePoint(ch.codePointAt(0)) ? 2 : 1;
+  }
+  function visualWidth(str) {
+    str = String(str == null ? '' : str);
+    var w = 0;
+    for (var i = 0; i < str.length; i++) w += charWidth(str.charAt(i));
+    return w;
+  }
+  function padRightVisual(str, width) {
+    str = String(str == null ? '' : str);
+    var w = visualWidth(str);
+    while (w < width) { str += ' '; w++; }
+    return str;
+  }
+  function truncateNameVisual(name, maxWidth) {
+    if (!name) return '';
+    var w = 0, out = '';
+    for (var i = 0; i < name.length; i++) {
+      var ch = name.charAt(i);
+      var cw = charWidth(ch);
+      if (w + cw > maxWidth) {
+        return out + '…';
+      }
+      w += cw;
+      out += ch;
+    }
+    return out;
+  }
+
   function buildAlignmentText(alignedA, alignedB, symbolLine, nameA, nameB, startA, startB) {
-    var labelWidth = Math.max(truncateName(nameA, 14).length, truncateName(nameB, 14).length, 4) + 1;
+    var labelA = truncateNameVisual(nameA, 14);
+    var labelB = truncateNameVisual(nameB, 14);
+    var labelWidth = Math.max(visualWidth(labelA), visualWidth(labelB), 4) + 1;
     var maxPos = Math.max(startA + alignedA.length, startB + alignedB.length);
     var posWidth = String(maxPos).length;
     var lines = [];
@@ -50,11 +104,11 @@
       var lineBEndPos = consumedB ? (posB + consumedB - 1) : (posB - 1);
 
       lines.push(
-        padRight(truncateName(nameA, 14), labelWidth) + padLeft(String(consumedA ? posA : lineAEndPos), posWidth) + ' ' + chunkA + ' ' + lineAEndPos
+        padRightVisual(labelA, labelWidth) + padLeft(String(consumedA ? posA : lineAEndPos), posWidth) + ' ' + chunkA + ' ' + lineAEndPos
       );
-      lines.push(padRight('', labelWidth) + padLeft('', posWidth) + ' ' + chunkSym);
+      lines.push(padRightVisual('', labelWidth) + padLeft('', posWidth) + ' ' + chunkSym);
       lines.push(
-        padRight(truncateName(nameB, 14), labelWidth) + padLeft(String(consumedB ? posB : lineBEndPos), posWidth) + ' ' + chunkB + ' ' + lineBEndPos
+        padRightVisual(labelB, labelWidth) + padLeft(String(consumedB ? posB : lineBEndPos), posWidth) + ' ' + chunkB + ' ' + lineBEndPos
       );
       lines.push('');
 
@@ -154,7 +208,8 @@
       viewer: root.querySelector('[data-role="viewer"]'),
       diffList: root.querySelector('[data-role="diff-list"]'),
       btnCopy: root.querySelector('[data-role="copy"]'),
-      btnDownload: root.querySelector('[data-role="download"]')
+      btnDownload: root.querySelector('[data-role="download"]'),
+      btnDownloadHtml: root.querySelector('[data-role="download-html"]')
     };
 
     var core = window.BioOnSunAlignCore;
@@ -258,7 +313,7 @@
       return { text: text, cls: cls };
     }
 
-    function buildReport(result) {
+    function buildReportMetaLines(result) {
       var lines = [];
       lines.push(i18n.reportTitle);
       lines.push(i18n.generated + ': ' + new Date().toLocaleString());
@@ -283,9 +338,60 @@
         ' | ' + i18n.gaps + ': ' + result.gapCount + ' (' + result.gapPct.toFixed(1) + '%)' +
         ' | ' + i18n.score + ': ' + result.score.toFixed(1)
       );
+      return lines;
+    }
+
+    function buildAlignmentBlockText(result) {
+      return buildAlignmentText(result.alignedA, result.alignedB, result.symbolLine, state.lastNameA, state.lastNameB, result.startA, result.startB);
+    }
+
+    function buildReport(result) {
+      var lines = buildReportMetaLines(result);
       lines.push('');
-      lines.push(buildAlignmentText(result.alignedA, result.alignedB, result.symbolLine, state.lastNameA, state.lastNameB, result.startA, result.startB));
+      lines.push(buildAlignmentBlockText(result));
       return lines.join('\n');
+    }
+
+    // A rich HTML version of the report: metadata as normal text, the
+    // alignment block wrapped in a <pre> with an explicit monospace font.
+    // Pasted into Word/Google Docs/Gmail, rich-text targets honor this
+    // font-family declaration, so the columns stay aligned there too —
+    // unlike plain-text paste, which falls back to the target's default
+    // (usually proportional) font and breaks any space-based alignment.
+    function buildReportHtml(result, standalone) {
+      var metaHtml = buildReportMetaLines(result).map(function (line) {
+        return escapeHtml(line) || '&nbsp;';
+      }).join('<br>');
+      var alignHtml = escapeHtml(buildAlignmentBlockText(result));
+      var body =
+        '<div style="font-family: -apple-system, \'Segoe UI\', Arial, sans-serif; color:#1c2b28; font-size:14px; line-height:1.6;">' +
+        '<div>' + metaHtml + '</div>' +
+        '<pre style="font-family: Consolas, \'Courier New\', monospace; white-space: pre; background:#0f1f1b; color:#d9f2e7; padding:14px 16px; border-radius:8px; font-size:12.5px; line-height:1.6; overflow-x:auto; margin:14px 0 0;">' + alignHtml + '</pre>' +
+        '</div>';
+      if (!standalone) return body;
+      return '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + escapeHtml(i18n.reportTitle) + '</title></head><body>' + body + '</body></html>';
+    }
+
+    // Copies both a plain-text and an HTML representation to the clipboard
+    // when supported, so rich-text targets (Word, Docs, Gmail) get the
+    // monospace-formatted version instead of losing alignment on paste.
+    // Falls back to plain-text-only copy if the rich Clipboard API is
+    // unavailable or throws (older browsers, insecure context, etc.).
+    function copyRich(plainText, htmlText, successMessage) {
+      if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+        try {
+          var item = new ClipboardItem({
+            'text/plain': new Blob([plainText], { type: 'text/plain' }),
+            'text/html': new Blob([htmlText], { type: 'text/html' })
+          });
+          navigator.clipboard.write([item]).then(
+            function () { window.BioOnSun.toast(successMessage); },
+            function () { window.BioOnSun.copyText(plainText, successMessage); }
+          );
+          return;
+        } catch (e) { /* fall through to plain-text copy */ }
+      }
+      window.BioOnSun.copyText(plainText, successMessage);
     }
 
     function renderDiffList(result) {
@@ -455,13 +561,19 @@
     if (els.btnCopy) {
       els.btnCopy.addEventListener('click', function () {
         if (!state.lastResult) { window.BioOnSun.toast(i18n.noInput); return; }
-        window.BioOnSun.copyText(buildReport(state.lastResult), i18n.copied);
+        copyRich(buildReport(state.lastResult), buildReportHtml(state.lastResult, false), i18n.copied);
       });
     }
     if (els.btnDownload) {
       els.btnDownload.addEventListener('click', function () {
         if (!state.lastResult) { window.BioOnSun.toast(i18n.noInput); return; }
         window.BioOnSun.download('sequence-alignment-report.txt', buildReport(state.lastResult));
+      });
+    }
+    if (els.btnDownloadHtml) {
+      els.btnDownloadHtml.addEventListener('click', function () {
+        if (!state.lastResult) { window.BioOnSun.toast(i18n.noInput); return; }
+        window.BioOnSun.download('sequence-alignment-report.html', buildReportHtml(state.lastResult, true), 'text/html;charset=utf-8');
       });
     }
 
