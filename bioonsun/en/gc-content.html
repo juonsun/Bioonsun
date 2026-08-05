@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/bioonsun/favicon.svg" type="image/svg+xml">
+<title>GC Content Calculator — DNA/RNA GC% & GC Skew | BioOnSun</title>
+<meta name="description" content="Calculate GC content, base composition, and GC skew for DNA/RNA sequences for free. Supports multi-FASTA input and a sliding-window GC chart — all computed instantly in your browser.">
+<link rel="canonical" href="https://juonsun.com/bioonsun/en/gc-content.html">
+<link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/gc-content.html">
+<link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/gc-content.html">
+<link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/gc-content.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is GC content?",
+      "acceptedAnswer": { "@type": "Answer", "text": "GC content is the percentage of bases in a DNA/RNA sequence that are guanine (G) or cytosine (C): GC content (%) = (count of G + count of C) / total base count × 100." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does GC content matter?",
+      "acceptedAnswer": { "@type": "Answer", "text": "G-C base pairs form three hydrogen bonds versus two for A-T, making GC-rich regions more thermally stable. This makes GC content useful for predicting PCR primer melting temperature (Tm), characterizing genomes by species, and anticipating sequencing coverage bias." }
+    },
+    {
+      "@type": "Question",
+      "name": "What does GC skew mean?",
+      "acceptedAnswer": { "@type": "Answer", "text": "GC skew is calculated as (G-C)/(G+C) and measures the asymmetry of G versus C on one strand. In bacterial genomes it is often used to help locate the origin of replication." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my sequence data sent to a server?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. All computation happens locally in your browser using JavaScript. Nothing is transmitted to or stored on any server." }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="brand-logo">B</span>Bio<span class="brand-dot">On</span>Sun</a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="reverse-complement.html">Reverse Complement</a>
+      <a href="gc-content.html" class="active">GC Content Calculator</a>
+      <a href="translate.html">DNA→Protein Translator</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <div class="lang-switch">
+        <a href="../gc-content.html">KO</a>
+        <a href="gc-content.html" class="active">EN</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding-bottom: 20px;">
+    <div class="container">
+      <span class="pill">DNA / RNA sequence tool</span>
+      <h1>GC Content Calculator</h1>
+      <p class="lead">Paste a DNA or RNA sequence to instantly get GC content, base composition, and GC/AT skew. Supports multi-FASTA input and a sliding-window chart showing how GC content changes along the sequence.</p>
+    </div>
+  </section>
+
+  <section style="padding-top: 0; border-top: none;">
+    <div class="container">
+      <div class="tool-app" data-tool="gc-content" data-i18n="en" data-sample="&gt;gc_rich_demo&#10;GCGGCCGCATGCGGCCGCTAGCGGCCGCGCGGCCGCATGCGGCCGCTAGCGGCCGCGCGGCCGCATGCGGCCGCTAGCGGCCGCGCGGCCGCATGCGGCCGCTAGCGGCCGCGCGGCCGCATGCGGCCGCTAGCGGCCGCGCGGCCGCATGCGGCCGCTAGCGGCCGCGCGGCCGCATGCGGCCGCTAGCGGCCGCGCGGCCGCATGCGGCCGCTAGCGGCC&#10;&gt;at_rich_demo&#10;ATATTTAAATATATTTAAATTTATATAATATTTAAATATATTTAAATTTATATAATATTTAAATATATTTAAATTTATATAATATTTAAATATATTTAAATTTATATAATATTTAAATATATTTAAATTTATATAATATTTAAATATATTTAAATTTATATAATATTTAAATATATTTAAATTTATATAATATTTAAATATATTTAAATTTATATA">
+
+        <label class="field-label" for="gc-input">
+          <span>Input sequence (DNA/RNA, FASTA / multi-FASTA supported)</span>
+        </label>
+        <textarea id="gc-input" class="seq-box" data-role="input" spellcheck="false" placeholder="e.g. ATGCGTACGTTAGC or a FASTA / multi-FASTA block with &gt;headers"></textarea>
+
+        <div class="btn-row">
+          <button type="button" class="btn" data-role="sample">Load sample sequence</button>
+          <button type="button" class="btn btn-ghost" data-role="clear">Clear</button>
+        </div>
+
+        <div class="option-group" style="margin: 18px 0 6px;">
+          <label class="field-label" for="gc-window">
+            <span>Sliding window size</span>
+            <span class="small"><strong data-role="window-value">50</strong> nt</span>
+          </label>
+          <input type="range" id="gc-window" class="range-input" min="4" max="300" step="1" value="50" data-role="window-size">
+        </div>
+
+        <div class="option-group" data-role="record-select-wrap" hidden style="margin-bottom: 18px;">
+          <label class="field-label" for="gc-record"><span>Sequence to show in the chart / stats</span></label>
+          <select id="gc-record" class="select-input" data-role="record-select"></select>
+        </div>
+
+        <div class="gc-summary-grid" data-role="summary">
+          <div class="gc-stat-tile">
+            <span class="gc-stat-label">Length</span>
+            <strong data-role="stat-length">0</strong>
+            <span class="small">nt</span>
+          </div>
+          <div class="gc-stat-tile gc-stat-highlight">
+            <span class="gc-stat-label">GC content</span>
+            <strong data-role="stat-gc">--</strong>
+          </div>
+          <div class="gc-stat-tile">
+            <span class="gc-stat-label">AT content</span>
+            <strong data-role="stat-at">--</strong>
+          </div>
+          <div class="gc-stat-tile">
+            <span class="gc-stat-label">GC Skew</span>
+            <strong data-role="stat-gcskew">--</strong>
+          </div>
+          <div class="gc-stat-tile">
+            <span class="gc-stat-label">AT Skew</span>
+            <strong data-role="stat-atskew">--</strong>
+          </div>
+        </div>
+
+        <label class="field-label"><span>Base composition</span></label>
+        <div class="gc-comp-bar" data-role="comp-bar"></div>
+        <div class="gc-comp-legend" data-role="comp-legend"></div>
+
+        <label class="field-label"><span>GC content along the sequence (sliding window)</span></label>
+        <div class="gc-chart-wrap">
+          <canvas data-role="chart" width="900" height="220" hidden></canvas>
+          <p class="result-placeholder" data-role="chart-placeholder">Paste a sequence to see how GC content changes across its length.</p>
+          <p class="small" data-role="chart-note" style="margin: 8px 0 0;"></p>
+        </div>
+
+        <div data-role="multi-wrap" hidden>
+          <label class="field-label"><span>Per-sequence GC content (multi-FASTA)</span></label>
+          <div class="table-scroll">
+            <table class="gc-table">
+              <thead>
+                <tr><th>Name</th><th>Length (nt)</th><th>GC%</th><th>AT%</th><th>GC Skew</th></tr>
+              </thead>
+              <tbody data-role="multi-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn btn-primary" data-role="copy">Copy report</button>
+          <button type="button" class="btn" data-role="download">Download report (.txt)</button>
+        </div>
+
+        <div class="privacy-note">
+          🔒 Everything is computed right here in your browser. Your sequence is never sent to or stored on a server.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="ad-slot">Ad placement (to be added after Google AdSense approval)</div>
+  </div>
+
+  <section>
+    <div class="container prose">
+      <h2>What is GC content?</h2>
+      <p>GC content is the share of a DNA or RNA sequence made up of <strong>guanine (G)</strong> and <strong>cytosine (C)</strong>.</p>
+      <p><code>GC content (%) = (count of G + count of C) / total base count × 100</code></p>
+      <p>For example, if 3 out of 10 bases are G and 2 are C, GC content is 50%. Depending on the organism or genomic region, GC content typically ranges anywhere from the low 20s to the high 70s (percent).</p>
+
+      <h2>Why does GC content matter?</h2>
+      <p>G-C base pairs are held together by three hydrogen bonds, while A-T pairs have only two — so <strong>higher GC content generally means a more thermally stable double helix</strong>. That single property is why GC content shows up across a range of practical bioinformatics tasks.</p>
+      <ul>
+        <li><strong>PCR primer design</strong>: higher GC content raises melting temperature (Tm), so checking a primer's GC content (commonly recommended in the 40–60% range) helps predict binding stability.</li>
+        <li><strong>Genome and species characterization</strong>: organisms tend to have a characteristic average GC content (for example, <em>Mycobacterium tuberculosis</em> is GC-rich while <em>Plasmodium falciparum</em> is strongly AT-rich), which can be a useful clue when identifying the likely source of an unknown sequence or spotting contamination.</li>
+        <li><strong>Sequencing quality control</strong>: next-generation sequencing (NGS) is prone to coverage bias in regions with extreme GC content, so knowing GC content ahead of time helps with interpreting coverage results.</li>
+        <li><strong>Gene prediction and comparative genomics</strong>: gene-dense regions within a genome often differ in GC content from gene-poor regions, making it a useful supporting signal for gene prediction and isochore analysis.</li>
+      </ul>
+
+      <h2>What is GC skew?</h2>
+      <p>GC skew is computed as <code>(G - C) / (G + C)</code> and captures the relative imbalance between G and C on a single strand. A positive value means more G, a negative value means more C. In organisms with circular genomes, such as bacteria, the sign of GC skew often flips near the origin and terminus of replication, which makes it a useful signal for locating the origin of replication. This tool reports AT skew (<code>(A-T)/(A+T)</code>) alongside GC skew for the same reason.</p>
+
+      <h2>Sliding window analysis</h2>
+      <p>A single average GC value hides local variation within a sequence. This tool slides a window of a size you choose across the sequence and computes the GC content of each window, plotting the result as a chart. That makes it easy to spot local regions of unusually high or low GC content — such as CpG islands, regulatory regions, or repetitive elements. Use a smaller window for finer detail, or a larger one to see the broad trend.</p>
+
+      <h2>Multi-FASTA support</h2>
+      <p>Paste an input with multiple <code>&gt;</code> headers and the tool summarizes GC content, AT content, and GC skew for every record in a table. Click a table row, or pick a sequence from the dropdown above, to switch the detailed stats and sliding-window chart to that record.</p>
+
+      <h2>How to use it</h2>
+      <ol>
+        <li>Paste your DNA/RNA sequence (or a FASTA / multi-FASTA block) into the input box above.</li>
+        <li>Adjust the sliding window size if you want a finer or coarser view of the chart.</li>
+        <li>If you pasted multiple sequences, pick the one you want from the table or dropdown.</li>
+        <li>Copy the report or download it as a text file.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose">
+      <h2>Frequently asked questions</h2>
+      <details class="faq-item" open>
+        <summary>What is GC content?</summary>
+        <p>GC content is the percentage of bases in a DNA/RNA sequence that are guanine (G) or cytosine (C): GC content (%) = (count of G + count of C) / total base count × 100.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Why does GC content matter?</summary>
+        <p>G-C base pairs form three hydrogen bonds versus two for A-T, making GC-rich regions more thermally stable. This makes GC content useful for predicting PCR primer melting temperature (Tm), characterizing genomes by species, and anticipating sequencing coverage bias.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What does GC skew mean?</summary>
+        <p>GC skew is calculated as (G-C)/(G+C) and measures the asymmetry of G versus C on one strand. In bacterial genomes it is often used to help locate the origin of replication.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How are N and IUPAC ambiguity codes (R, Y, W, etc.) handled?</summary>
+        <p>N is counted separately, and other ambiguity codes are grouped under "other." Both are included in the total sequence length, but excluded from the GC/AT content calculation.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does this support multi-FASTA input?</summary>
+        <p>Yes. Paste an input containing multiple <code>&gt;</code> headers and each record's GC content is summarized in a table; pick any row to see its detailed stats and chart.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is my sequence data sent to a server?</summary>
+        <p>No. All computation happens locally in your browser using JavaScript. Nothing is transmitted to or stored on any server.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>BioOnSun</h4>
+        <p class="small">A free collection of online bioinformatics tools. All calculations run in your browser only — sequence data is never sent to or stored on our servers.</p>
+      </div>
+      <div>
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="reverse-complement.html">Reverse Complement</a></li>
+          <li><a href="gc-content.html">GC Content Calculator</a></li>
+          <li><a href="translate.html">DNA → Protein Translator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Info</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-portal-link"><a href="/">← See other services on juonsun.com</a></div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 BioOnSun (juonsun.com/bioonsun). All rights reserved.</span>
+      <span class="updated-note">Last updated: August 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/gc-content.js"></script>
+</body>
+</html>

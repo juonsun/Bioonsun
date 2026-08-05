@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/bioonsun/favicon.svg" type="image/svg+xml">
+<title>GC 함량 계산기 — DNA/RNA 서열 GC% · GC Skew 분석 | BioOnSun</title>
+<meta name="description" content="DNA/RNA 서열의 GC 함량, 염기 조성, GC Skew를 무료로 계산하세요. 멀티 FASTA와 슬라이딩 윈도우 그래프를 지원하며 모든 계산은 브라우저에서 즉시 처리됩니다.">
+<link rel="canonical" href="https://juonsun.com/bioonsun/gc-content.html">
+<link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/gc-content.html">
+<link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/gc-content.html">
+<link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/gc-content.html">
+<link rel="stylesheet" href="assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "GC 함량이란 무엇인가요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "서열 전체 염기 중 구아닌(G)과 사이토신(C)이 차지하는 비율(%)입니다. GC 함량 = (G의 개수 + C의 개수) / 전체 염기 수 × 100 으로 계산합니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "GC 함량은 왜 측정하나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "G-C 결합은 A-T 결합보다 수소결합이 하나 더 많아 더 안정적이기 때문에, GC 함량은 PCR 프라이머의 용융온도(Tm) 예측, 유전체의 종 특이적 특성 파악, 시퀀싱 커버리지 편향 예측 등 다양한 실무 분석에 활용됩니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "GC Skew는 무엇을 의미하나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "GC Skew = (G-C)/(G+C)로 계산하며, 두 가닥 사이의 G/C 비대칭 정도를 나타냅니다. 세균 유전체에서는 복제 원점(origin of replication)을 찾는 데 자주 활용됩니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "입력한 서열이 서버로 전송되나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "아니요. 모든 계산은 자바스크립트로 브라우저 내부에서만 이루어지며 서버로 전송되거나 저장되지 않습니다." }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="brand-logo">B</span>Bio<span class="brand-dot">On</span>Sun</a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">홈</a>
+      <a href="reverse-complement.html">Reverse Complement</a>
+      <a href="gc-content.html" class="active">GC 함량 계산기</a>
+      <a href="translate.html">DNA→단백질 번역기</a>
+      <a href="about.html">소개</a>
+      <a href="contact.html">문의</a>
+      <div class="lang-switch">
+        <a href="gc-content.html" class="active">KO</a>
+        <a href="en/gc-content.html">EN</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding-bottom: 20px;">
+    <div class="container">
+      <span class="pill">DNA / RNA 서열 도구</span>
+      <h1>GC 함량 계산기</h1>
+      <p class="lead">DNA·RNA 서열을 붙여넣으면 GC 함량, 염기 조성, GC/AT Skew를 즉시 계산합니다. 멀티 FASTA 입력과 위치별 GC 함량 변화를 보여주는 슬라이딩 윈도우 그래프를 지원합니다.</p>
+    </div>
+  </section>
+
+  <section style="padding-top: 0; border-top: none;">
+    <div class="container">
+      <div class="tool-app" data-tool="gc-content" data-i18n="ko" data-sample="&gt;gc_rich_demo&#10;GCGGCCGCATGCGGCCGCTAGCGGCCGCGCGGCCGCATGCGGCCGCTAGCGGCCGCGCGGCCGCATGCGGCCGCTAGCGGCCGCGCGGCCGCATGCGGCCGCTAGCGGCCGCGCGGCCGCATGCGGCCGCTAGCGGCCGCGCGGCCGCATGCGGCCGCTAGCGGCCGCGCGGCCGCATGCGGCCGCTAGCGGCCGCGCGGCCGCATGCGGCCGCTAGCGGCC&#10;&gt;at_rich_demo&#10;ATATTTAAATATATTTAAATTTATATAATATTTAAATATATTTAAATTTATATAATATTTAAATATATTTAAATTTATATAATATTTAAATATATTTAAATTTATATAATATTTAAATATATTTAAATTTATATAATATTTAAATATATTTAAATTTATATAATATTTAAATATATTTAAATTTATATAATATTTAAATATATTTAAATTTATATA">
+
+        <label class="field-label" for="gc-input">
+          <span>서열 입력 (DNA/RNA, FASTA/멀티 FASTA 지원)</span>
+        </label>
+        <textarea id="gc-input" class="seq-box" data-role="input" spellcheck="false" placeholder="예: ATGCGTACGTTAGC 또는 >header 포함 FASTA / 멀티 FASTA 형식"></textarea>
+
+        <div class="btn-row">
+          <button type="button" class="btn" data-role="sample">샘플 서열 불러오기</button>
+          <button type="button" class="btn btn-ghost" data-role="clear">지우기</button>
+        </div>
+
+        <div class="option-group" style="margin: 18px 0 6px;">
+          <label class="field-label" for="gc-window">
+            <span>슬라이딩 윈도우 크기</span>
+            <span class="small"><strong data-role="window-value">50</strong> nt</span>
+          </label>
+          <input type="range" id="gc-window" class="range-input" min="4" max="300" step="1" value="50" data-role="window-size">
+        </div>
+
+        <div class="option-group" data-role="record-select-wrap" hidden style="margin-bottom: 18px;">
+          <label class="field-label" for="gc-record"><span>차트/통계에 표시할 서열 선택</span></label>
+          <select id="gc-record" class="select-input" data-role="record-select"></select>
+        </div>
+
+        <div class="gc-summary-grid" data-role="summary">
+          <div class="gc-stat-tile">
+            <span class="gc-stat-label">서열 길이</span>
+            <strong data-role="stat-length">0</strong>
+            <span class="small">nt</span>
+          </div>
+          <div class="gc-stat-tile gc-stat-highlight">
+            <span class="gc-stat-label">GC 함량</span>
+            <strong data-role="stat-gc">--</strong>
+          </div>
+          <div class="gc-stat-tile">
+            <span class="gc-stat-label">AT 함량</span>
+            <strong data-role="stat-at">--</strong>
+          </div>
+          <div class="gc-stat-tile">
+            <span class="gc-stat-label">GC Skew</span>
+            <strong data-role="stat-gcskew">--</strong>
+          </div>
+          <div class="gc-stat-tile">
+            <span class="gc-stat-label">AT Skew</span>
+            <strong data-role="stat-atskew">--</strong>
+          </div>
+        </div>
+
+        <label class="field-label"><span>염기 조성</span></label>
+        <div class="gc-comp-bar" data-role="comp-bar"></div>
+        <div class="gc-comp-legend" data-role="comp-legend"></div>
+
+        <label class="field-label"><span>GC 함량 변화 (슬라이딩 윈도우)</span></label>
+        <div class="gc-chart-wrap">
+          <canvas data-role="chart" width="900" height="220" hidden></canvas>
+          <p class="result-placeholder" data-role="chart-placeholder">서열을 입력하면 위치별 GC 함량 변화 그래프가 여기에 표시됩니다.</p>
+          <p class="small" data-role="chart-note" style="margin: 8px 0 0;"></p>
+        </div>
+
+        <div data-role="multi-wrap" hidden>
+          <label class="field-label"><span>서열별 GC 함량 (멀티 FASTA)</span></label>
+          <div class="table-scroll">
+            <table class="gc-table">
+              <thead>
+                <tr><th>이름</th><th>길이 (nt)</th><th>GC%</th><th>AT%</th><th>GC Skew</th></tr>
+              </thead>
+              <tbody data-role="multi-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn btn-primary" data-role="copy">결과 리포트 복사하기</button>
+          <button type="button" class="btn" data-role="download">리포트 다운로드 (.txt)</button>
+        </div>
+
+        <div class="privacy-note">
+          🔒 모든 계산은 이 브라우저 안에서만 실행됩니다. 입력한 서열은 서버로 전송되거나 저장되지 않습니다.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="ad-slot">광고 영역 (Google AdSense 승인 후 삽입 예정)</div>
+  </div>
+
+  <section>
+    <div class="container prose">
+      <h2>GC 함량이란?</h2>
+      <p>GC 함량(GC content)은 DNA·RNA 서열을 이루는 전체 염기 중 <strong>구아닌(G)</strong>과 <strong>사이토신(C)</strong>이 차지하는 비율입니다.</p>
+      <p><code>GC 함량(%) = (G의 개수 + C의 개수) / 전체 염기 수 × 100</code></p>
+      <p>예를 들어 10개 염기 중 G와 C가 각각 3개, 2개씩 있다면 GC 함량은 50%입니다. 생물종·유전체 영역에 따라 GC 함량은 20%대부터 70%대까지 크게 달라집니다.</p>
+
+      <h2>왜 GC 함량을 측정해야 하나요?</h2>
+      <p>간단히 말해, G-C 염기쌍은 3개의 수소결합으로 연결되어 있고 A-T 염기쌍은 2개의 수소결합으로 연결되어 있어 <strong>GC 함량이 높을수록 이중나선 구조가 더 안정적</strong>입니다. 이 특성 때문에 GC 함량은 여러 실무 분석에서 활용됩니다.</p>
+      <ul>
+        <li><strong>PCR 프라이머 설계</strong>: GC 함량이 높을수록 용융온도(Tm)가 올라가므로, 프라이머의 GC 함량(보통 40~60% 권장)을 확인해 결합 안정성을 예측합니다.</li>
+        <li><strong>유전체·종 특성 파악</strong>: 생물종마다 고유한 평균 GC 함량을 가지는 경향이 있어(예: 결핵균은 GC 함량이 매우 높고, 말라리아 원충은 매우 낮음), 미확인 서열의 출처를 가늠하거나 오염 여부를 점검하는 데 참고할 수 있습니다.</li>
+        <li><strong>시퀀싱 품질 관리</strong>: 차세대 시퀀싱(NGS)에서는 극단적으로 GC 함량이 높거나 낮은 영역에서 커버리지 편향(coverage bias)이 발생하기 쉬워, 사전에 GC 함량을 확인해두면 결과 해석에 도움이 됩니다.</li>
+        <li><strong>유전자 예측·비교 유전체학</strong>: 같은 유전체 안에서도 유전자가 밀집한 영역과 그렇지 않은 영역의 GC 함량이 다른 경우가 많아, 유전자 예측이나 등지역(isochore) 분석의 보조 지표로 쓰입니다.</li>
+      </ul>
+
+      <h2>GC Skew란?</h2>
+      <p>GC Skew는 <code>(G - C) / (G + C)</code>로 계산하며, 한 가닥 안에서 G와 C의 상대적인 비대칭을 나타냅니다. 값이 양수이면 G가, 음수이면 C가 더 많다는 뜻입니다. 세균처럼 원형 유전체를 가진 생물에서는 GC Skew의 부호가 복제 원점(origin of replication)과 종결점(terminus) 부근에서 뒤바뀌는 경향이 있어, 복제 원점을 추정하는 데 활용되기도 합니다. 같은 방식으로 AT Skew(<code>(A-T)/(A+T)</code>)도 함께 제공합니다.</p>
+
+      <h2>슬라이딩 윈도우(Sliding Window) 분석</h2>
+      <p>전체 서열의 평균 GC 함량만으로는 서열 내부의 국소적인 변화를 알 수 없습니다. 이 도구는 지정한 크기(윈도우)만큼 구간을 이동시키며 각 구간의 GC 함량을 계산해 그래프로 보여줍니다. 이를 통해 GC 함량이 유난히 높거나 낮은 국소 영역(예: CpG 섬, 조절 영역, 반복 서열 등)을 시각적으로 확인할 수 있습니다. 윈도우 크기를 줄이면 더 세밀한 변화를, 늘리면 전반적인 경향을 볼 수 있습니다.</p>
+
+      <h2>멀티 FASTA 지원</h2>
+      <p><code>&gt;</code>로 시작하는 헤더가 여러 개 포함된 멀티 FASTA를 붙여넣으면, 서열별로 GC 함량·AT 함량·GC Skew를 표로 정리해서 보여줍니다. 표의 행을 클릭하거나 상단 선택 목록에서 서열을 고르면 해당 서열의 상세 통계와 슬라이딩 윈도우 그래프로 전환됩니다.</p>
+
+      <h2>사용 방법</h2>
+      <ol>
+        <li>위 입력창에 DNA/RNA 서열(또는 FASTA·멀티 FASTA 형식)을 붙여넣습니다.</li>
+        <li>필요하면 슬라이딩 윈도우 크기를 조절해 그래프의 해상도를 바꿉니다.</li>
+        <li>여러 서열을 입력했다면 표 또는 선택 목록에서 확인하고 싶은 서열을 고릅니다.</li>
+        <li>결과 리포트를 복사하거나 텍스트 파일로 다운로드합니다.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose">
+      <h2>자주 묻는 질문</h2>
+      <details class="faq-item" open>
+        <summary>GC 함량이란 무엇인가요?</summary>
+        <p>서열 전체 염기 중 구아닌(G)과 사이토신(C)이 차지하는 비율(%)입니다. GC 함량 = (G의 개수 + C의 개수) / 전체 염기 수 × 100 으로 계산합니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>GC 함량은 왜 측정하나요?</summary>
+        <p>G-C 결합은 A-T 결합보다 수소결합이 하나 더 많아 더 안정적이기 때문에, GC 함량은 PCR 프라이머의 용융온도(Tm) 예측, 유전체의 종 특이적 특성 파악, 시퀀싱 커버리지 편향 예측 등 다양한 실무 분석에 활용됩니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>GC Skew는 무엇을 의미하나요?</summary>
+        <p>GC Skew = (G-C)/(G+C)로 계산하며, 두 가닥 사이의 G/C 비대칭 정도를 나타냅니다. 세균 유전체에서는 복제 원점(origin of replication)을 찾는 데 자주 활용됩니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>N이나 IUPAC 모호성 코드(R, Y, W 등)는 어떻게 처리되나요?</summary>
+        <p>N은 별도 항목으로 집계되고, 그 외 모호성 코드는 "기타"로 집계됩니다. 두 경우 모두 전체 서열 길이에는 포함되지만 GC/AT 함량 계산에는 포함되지 않습니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>멀티 FASTA도 지원하나요?</summary>
+        <p>네. 여러 개의 <code>&gt;</code> 헤더가 포함된 입력을 붙여넣으면 서열별로 GC 함량을 표로 정리해서 보여주며, 표에서 원하는 서열을 선택해 상세 통계와 그래프를 확인할 수 있습니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>입력한 서열이 서버로 전송되나요?</summary>
+        <p>아니요. 모든 계산은 자바스크립트로 브라우저 내부에서만 이루어지며 서버로 전송되거나 저장되지 않습니다.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>BioOnSun</h4>
+        <p class="small">무료 온라인 생물정보학 도구 모음입니다. 모든 계산은 여러분의 브라우저 안에서만 이루어지며, 입력한 서열 데이터는 서버로 전송되거나 저장되지 않습니다.</p>
+      </div>
+      <div>
+        <h4>도구</h4>
+        <ul>
+          <li><a href="reverse-complement.html">Reverse Complement</a></li>
+          <li><a href="gc-content.html">GC 함량 계산기</a></li>
+          <li><a href="translate.html">DNA → 단백질 번역기</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>정보</h4>
+        <ul>
+          <li><a href="about.html">소개</a></li>
+          <li><a href="privacy.html">개인정보 처리방침</a></li>
+          <li><a href="contact.html">문의하기</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-portal-link"><a href="/">← juonsun.com의 다른 서비스 보기</a></div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 BioOnSun (juonsun.com/bioonsun). All rights reserved.</span>
+      <span class="updated-note">최종 업데이트: 2026년 8월</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/gc-content.js"></script>
+</body>
+</html>

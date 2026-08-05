@@ -660,3 +660,102 @@ textarea[readonly] {
   border-bottom: 1px dashed var(--color-border);
 }
 .orf-list li:last-child { border-bottom: none; }
+
+/* ---------- GC content tool ---------- */
+
+.range-input {
+  width: 100%;
+  accent-color: var(--color-primary);
+}
+
+.gc-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin: 18px 0;
+}
+.gc-stat-tile {
+  background: #fbfdfc;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.gc-stat-tile strong {
+  font-size: 1.3rem;
+  color: var(--color-text);
+  font-family: var(--font-mono);
+}
+.gc-stat-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.gc-stat-highlight {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+}
+.gc-stat-highlight strong { color: var(--color-primary-dark); }
+
+.gc-comp-bar {
+  display: flex;
+  height: 22px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  margin-top: 4px;
+  background: var(--color-bg);
+}
+.gc-comp-bar span { height: 100%; }
+
+.gc-comp-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 10px 0 22px;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+.gc-comp-legend .dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.gc-chart-wrap {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  background: #fbfdfc;
+  margin: 10px 0 20px;
+}
+.gc-chart-wrap canvas { width: 100%; height: auto; display: block; }
+
+.table-scroll { overflow-x: auto; margin: 10px 0 20px; }
+table.gc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  min-width: 480px;
+}
+table.gc-table th, table.gc-table td {
+  border: 1px solid var(--color-border);
+  padding: 8px 10px;
+  text-align: left;
+}
+table.gc-table th {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+table.gc-table tbody tr:hover { background: var(--color-bg); }
+table.gc-table tbody tr.active-row {
+  background: var(--color-primary-light);
+  font-weight: 700;
+}
