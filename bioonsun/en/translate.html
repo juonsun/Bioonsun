@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/bioonsun/favicon.svg" type="image/svg+xml">
+<title>DNA/RNA → Protein Translator — 6-Frame Translation | BioOnSun</title>
+<meta name="description" content="Translate a DNA/RNA sequence into protein for free. Supports all 6 reading frames, 18 NCBI genetic code tables (including mitochondrial codes), and automatic ORF detection — all computed instantly in your browser.">
+<link rel="canonical" href="https://juonsun.com/bioonsun/en/translate.html">
+<link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/translate.html">
+<link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/translate.html">
+<link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/translate.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does it mean to translate DNA into protein?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The DNA (or mRNA) sequence is split into 3-base units called codons, and each codon is converted into its corresponding amino acid according to a genetic code table. The resulting amino acid chain is a protein's primary structure." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why are there 6 reading frames?",
+      "acceptedAnswer": { "@type": "Answer", "text": "There are 3 frames on the forward strand (+1, +2, +3), starting one base apart, and 3 more on the reverse complement strand (-1, -2, -3), giving 6 possible translations in total. All 6 are typically checked when the true frame of a gene isn't known in advance." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool support mitochondrial genetic codes?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. It supports 18 NCBI-defined genetic code tables, including the Standard code and various mitochondrial codes for vertebrates, invertebrates, yeast, mold, and more." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my sequence data sent to a server?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. All translation happens locally in your browser using JavaScript. Nothing is transmitted to or stored on any server." }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="brand-logo">B</span>Bio<span class="brand-dot">On</span>Sun</a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="reverse-complement.html">Reverse Complement</a>
+      <a href="translate.html" class="active">DNA→Protein Translator</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <div class="lang-switch">
+        <a href="../translate.html">KO</a>
+        <a href="translate.html" class="active">EN</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding-bottom: 20px;">
+    <div class="container">
+      <span class="pill">DNA / RNA sequence tool</span>
+      <h1>DNA/RNA → Protein Translator</h1>
+      <p class="lead">Paste a DNA or RNA sequence to instantly translate it into amino acids across all 6 reading frames. Supports 18 genetic code tables and automatically detects and highlights ORFs (Open Reading Frames).</p>
+    </div>
+  </section>
+
+  <section style="padding-top: 0; border-top: none;">
+    <div class="container">
+      <div class="tool-app" data-tool="translate" data-i18n="en" data-sample="&gt;demo_sequence&#10;ATGGCTCATTGGAAACGTGGCTGCACTAGTGGCTAA">
+
+        <div class="translate-options">
+          <div class="option-group">
+            <label class="field-label" for="tr-table"><span>Genetic Code Table</span></label>
+            <select id="tr-table" class="select-input" data-role="table"></select>
+          </div>
+          <div class="option-group">
+            <label class="field-label"><span>Reading frames (click to toggle)</span></label>
+            <div class="frame-toggle" data-role="frames">
+              <button type="button" class="chip active" data-frame="f1">+1</button>
+              <button type="button" class="chip active" data-frame="f2">+2</button>
+              <button type="button" class="chip active" data-frame="f3">+3</button>
+              <button type="button" class="chip active" data-frame="r1">−1</button>
+              <button type="button" class="chip active" data-frame="r2">−2</button>
+              <button type="button" class="chip active" data-frame="r3">−3</button>
+            </div>
+          </div>
+          <div class="option-group">
+            <label class="field-label"><span>Output format</span></label>
+            <div class="mode-tabs" data-role="format">
+              <button type="button" class="mode-tab active" data-format="compact">Compact (1-letter)</button>
+              <button type="button" class="mode-tab" data-format="verbose">Verbose (Met · Stop)</button>
+            </div>
+          </div>
+        </div>
+
+        <label class="field-label" for="tr-input">
+          <span>Input sequence (DNA/RNA, FASTA supported)</span>
+        </label>
+        <textarea id="tr-input" class="seq-box" data-role="input" spellcheck="false" placeholder="e.g. ATGGCTCATTGGAAACGTGGCTGCACTAGTGGCTAA or a FASTA block with a &gt;header"></textarea>
+
+        <div class="btn-row">
+          <button type="button" class="btn" data-role="sample">Load sample sequence</button>
+          <button type="button" class="btn btn-ghost" data-role="clear">Clear</button>
+        </div>
+
+        <label class="field-label"><span>Translation results (per selected frame)</span></label>
+        <div class="translate-results" data-role="results">
+          <p class="result-placeholder">Paste a sequence to see the translation for each selected reading frame.</p>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn btn-primary" data-role="copy">Copy all results</button>
+          <button type="button" class="btn" data-role="download">Download as FASTA</button>
+        </div>
+
+        <div class="stats-row">
+          <span>Input length: <strong data-role="stat-length">0</strong> nt</span>
+          <span>Genetic code in use: <strong data-role="stat-table">Standard</strong></span>
+        </div>
+
+        <div class="privacy-note">
+          🔒 Everything is computed right here in your browser. Your sequence is never sent to or stored on a server.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="ad-slot">Ad placement (to be added after Google AdSense approval)</div>
+  </div>
+
+  <section>
+    <div class="container prose">
+      <h2>What is DNA-to-protein translation?</h2>
+      <p>Inside a cell, DNA is first transcribed into mRNA, then read by the ribosome three bases (a <strong>codon</strong>) at a time and translated into amino acids. This tool skips transcription and directly splits your DNA/RNA input into codons, converting each one into an amino acid according to a genetic code table.</p>
+      <p>Because the result depends entirely on where you start reading, it's common practice to check all 6 possible reading frames (3 forward, 3 reverse) when the true start position of a gene isn't known.</p>
+
+      <h2>The 6 reading frames</h2>
+      <p>The same sequence produces a completely different amino acid sequence depending on where you start splitting it into codons.</p>
+      <ul>
+        <li><strong>+1, +2, +3</strong>: your input sequence (forward strand, 5'→3'), split into codons starting from the 1st, 2nd, or 3rd base.</li>
+        <li><strong>-1, -2, -3</strong>: the same, but applied to the reverse complement of your input sequence.</li>
+      </ul>
+      <p>Click the frame chips in the options above to turn individual frames on or off.</p>
+
+      <h2>Choosing a genetic code table</h2>
+      <p>Most organisms use the Standard genetic code, but mitochondria and some microorganisms use different codon-to-amino-acid assignments. This tool supports all <strong>18 NCBI-defined genetic code tables</strong> — Standard, various mitochondrial codes (vertebrate, invertebrate, yeast, mold, and more), the Bacterial/Archaeal/Plant Plastid code, and others. Pick the table that matches your organism of interest.</p>
+
+      <h2>Automatic ORF detection</h2>
+      <p>For each frame, the tool identifies an <strong>ORF</strong> as the stretch from a start codon (as defined by the selected genetic code table) to the next stop codon, highlights it in green, and lists its position and length. Stop codons are highlighted in red.</p>
+
+      <h2>IUPAC ambiguity codes and undetermined codons</h2>
+      <p>Codons containing IUPAC ambiguity codes (R, Y, N, etc.) are resolved by expanding every possible unambiguous combination. If all combinations translate to the same amino acid, that amino acid is shown; otherwise the codon is reported as <strong>X (Xaa, undetermined)</strong>.</p>
+
+      <h2>Output format</h2>
+      <ul>
+        <li><strong>Compact</strong>: single-letter amino acid codes with no spaces (e.g. MAIH...). Stop codons are shown as <code>*</code>.</li>
+        <li><strong>Verbose</strong>: three-letter codes like Ala, Gly, Stop, separated by spaces.</li>
+      </ul>
+      <p>The copy and download buttons generate Compact-format text, with each frame separated by a FASTA header in the form <code>&gt;sequence-name_frame+1</code>.</p>
+
+      <h2>How to use it</h2>
+      <ol>
+        <li>Paste your DNA/RNA sequence (or a FASTA block) into the input box above.</li>
+        <li>Choose a genetic code table if needed, and toggle on only the reading frames you want to inspect.</li>
+        <li>Pick Compact or Verbose output format.</li>
+        <li>Review the ORFs (highlighted in green) and stop codons (in red), then copy the results or download them as FASTA.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose">
+      <h2>Frequently asked questions</h2>
+      <details class="faq-item" open>
+        <summary>What does it mean to translate DNA into protein?</summary>
+        <p>The DNA (or mRNA) sequence is split into 3-base units called codons, and each codon is converted into its corresponding amino acid according to a genetic code table. The resulting amino acid chain is a protein's primary structure.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Why are there 6 reading frames?</summary>
+        <p>There are 3 frames on the forward strand (+1, +2, +3), starting one base apart, and 3 more on the reverse complement strand (-1, -2, -3), giving 6 possible translations in total. All 6 are typically checked when the true frame of a gene isn't known in advance.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does this tool support mitochondrial genetic codes?</summary>
+        <p>Yes. It supports 18 NCBI-defined genetic code tables, including the Standard code and various mitochondrial codes for vertebrates, invertebrates, yeast, mold, and more.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How is ORF highlighting calculated?</summary>
+        <p>An ORF is defined as the region from a codon recognized as a start codon in the selected genetic code table through the next stop codon (or the end of the frame, if no stop is found). Multiple ORFs are sorted by length, longest first.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is my sequence data sent to a server?</summary>
+        <p>No. All translation happens locally in your browser using JavaScript. Nothing is transmitted to or stored on any server.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>BioOnSun</h4>
+        <p class="small">A free collection of online bioinformatics tools. All calculations run in your browser only — sequence data is never sent to or stored on our servers.</p>
+      </div>
+      <div>
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="reverse-complement.html">Reverse Complement</a></li>
+          <li><a href="translate.html">DNA → Protein Translator</a></li>
+          <li><span class="small">GC Content Calculator (soon)</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Info</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-portal-link"><a href="/">← See other services on juonsun.com</a></div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 BioOnSun (juonsun.com/bioonsun). All rights reserved.</span>
+      <span class="updated-note">Last updated: August 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/translate.js"></script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/bioonsun/favicon.svg" type="image/svg+xml">
+<title>DNA/RNA → 단백질 번역기 — 6프레임 번역 | BioOnSun</title>
+<meta name="description" content="DNA/RNA 서열을 단백질(아미노산) 서열로 무료로 번역하세요. 6개 리딩프레임, 18종의 유전암호표(미토콘드리아 코드 포함), ORF 자동 감지를 지원하며 모든 계산은 브라우저에서 즉시 처리됩니다.">
+<link rel="canonical" href="https://juonsun.com/bioonsun/translate.html">
+<link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/translate.html">
+<link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/translate.html">
+<link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/translate.html">
+<link rel="stylesheet" href="assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "DNA를 단백질로 번역한다는 것은 어떤 의미인가요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "DNA(또는 mRNA) 서열을 3개 염기 단위(코돈)로 나누고, 유전암호표에 따라 각 코돈을 해당하는 아미노산으로 치환하는 과정입니다. 그 결과로 얻어지는 아미노산 서열이 단백질의 1차 구조입니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "리딩프레임(reading frame)이 6개인 이유는 무엇인가요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "정방향 가닥에서 시작 위치를 하나씩 옮긴 3개 프레임(+1, +2, +3)과, 역상보 가닥에서 마찬가지로 3개 프레임(-1, -2, -3)이 존재하기 때문에 총 6개의 번역 가능성이 생깁니다. 실제 유전자가 어느 프레임에 있는지 모를 때 6프레임을 모두 확인합니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "미토콘드리아 유전암호표도 지원하나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "네. 척추동물, 무척추동물, 효모, 곰팡이 등 NCBI가 정의한 18종의 유전암호표(표준 코드 포함)를 선택할 수 있습니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "입력한 서열이 서버로 전송되나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "아니요. 모든 번역 계산은 자바스크립트로 브라우저 내부에서만 이루어지며 서버로 전송되거나 저장되지 않습니다." }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="brand-logo">B</span>Bio<span class="brand-dot">On</span>Sun</a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">홈</a>
+      <a href="reverse-complement.html">Reverse Complement</a>
+      <a href="translate.html" class="active">DNA→단백질 번역기</a>
+      <a href="about.html">소개</a>
+      <a href="contact.html">문의</a>
+      <div class="lang-switch">
+        <a href="translate.html" class="active">KO</a>
+        <a href="en/translate.html">EN</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding-bottom: 20px;">
+    <div class="container">
+      <span class="pill">DNA / RNA 서열 도구</span>
+      <h1>DNA/RNA → 단백질 번역기</h1>
+      <p class="lead">DNA·RNA 서열을 붙여넣으면 6개 리딩프레임의 아미노산 서열을 즉시 계산합니다. 18종의 유전암호표를 지원하고, ORF(Open Reading Frame)를 자동으로 찾아 강조 표시합니다.</p>
+    </div>
+  </section>
+
+  <section style="padding-top: 0; border-top: none;">
+    <div class="container">
+      <div class="tool-app" data-tool="translate" data-i18n="ko" data-sample="&gt;demo_sequence&#10;ATGGCTCATTGGAAACGTGGCTGCACTAGTGGCTAA">
+
+        <div class="translate-options">
+          <div class="option-group">
+            <label class="field-label" for="tr-table"><span>유전암호표 (Genetic Code)</span></label>
+            <select id="tr-table" class="select-input" data-role="table"></select>
+          </div>
+          <div class="option-group">
+            <label class="field-label"><span>리딩 프레임 (클릭하여 켜기/끄기)</span></label>
+            <div class="frame-toggle" data-role="frames">
+              <button type="button" class="chip active" data-frame="f1">+1</button>
+              <button type="button" class="chip active" data-frame="f2">+2</button>
+              <button type="button" class="chip active" data-frame="f3">+3</button>
+              <button type="button" class="chip active" data-frame="r1">−1</button>
+              <button type="button" class="chip active" data-frame="r2">−2</button>
+              <button type="button" class="chip active" data-frame="r3">−3</button>
+            </div>
+          </div>
+          <div class="option-group">
+            <label class="field-label"><span>출력 형식</span></label>
+            <div class="mode-tabs" data-role="format">
+              <button type="button" class="mode-tab active" data-format="compact">Compact (한 글자)</button>
+              <button type="button" class="mode-tab" data-format="verbose">Verbose (Met · Stop)</button>
+            </div>
+          </div>
+        </div>
+
+        <label class="field-label" for="tr-input">
+          <span>서열 입력 (DNA/RNA, FASTA 지원)</span>
+        </label>
+        <textarea id="tr-input" class="seq-box" data-role="input" spellcheck="false" placeholder="예: ATGGCTCATTGGAAACGTGGCTGCACTAGTGGCTAA 또는 >header 포함 FASTA 형식"></textarea>
+
+        <div class="btn-row">
+          <button type="button" class="btn" data-role="sample">샘플 서열 불러오기</button>
+          <button type="button" class="btn btn-ghost" data-role="clear">지우기</button>
+        </div>
+
+        <label class="field-label"><span>번역 결과 (선택한 프레임별)</span></label>
+        <div class="translate-results" data-role="results">
+          <p class="result-placeholder">서열을 입력하면 선택한 리딩프레임의 번역 결과가 여기에 표시됩니다.</p>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn btn-primary" data-role="copy">전체 결과 복사하기</button>
+          <button type="button" class="btn" data-role="download">FASTA로 다운로드</button>
+        </div>
+
+        <div class="stats-row">
+          <span>입력 서열 길이: <strong data-role="stat-length">0</strong> nt</span>
+          <span>사용 중인 유전암호표: <strong data-role="stat-table">Standard</strong></span>
+        </div>
+
+        <div class="privacy-note">
+          🔒 모든 계산은 이 브라우저 안에서만 실행됩니다. 입력한 서열은 서버로 전송되거나 저장되지 않습니다.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="ad-slot">광고 영역 (Google AdSense 승인 후 삽입 예정)</div>
+  </div>
+
+  <section>
+    <div class="container prose">
+      <h2>DNA → 단백질 번역이란?</h2>
+      <p>세포 안에서 DNA는 먼저 mRNA로 전사(transcription)된 뒤, 리보솜에서 3개 염기 단위인 <strong>코돈(codon)</strong>을 하나씩 읽어 아미노산으로 번역(translation)됩니다. 이 도구는 전사 과정은 생략하고, 입력한 DNA/RNA 서열을 곧바로 코돈 단위로 나눠 유전암호표에 따라 아미노산 서열로 변환합니다.</p>
+      <p>번역은 시작 위치에 따라 결과가 완전히 달라지기 때문에, 실제 유전자가 어느 위치에서 시작하는지 모를 때는 가능한 6가지 리딩프레임(정방향 3개 + 역방향 3개)을 모두 확인하는 것이 일반적입니다.</p>
+
+      <h2>6개 리딩프레임(Reading Frame)</h2>
+      <p>같은 서열이라도 어디서부터 3개씩 끊어 읽느냐에 따라 완전히 다른 아미노산 서열이 나옵니다.</p>
+      <ul>
+        <li><strong>+1, +2, +3</strong>: 입력한 서열(정방향, 5'→3')을 각각 1번째, 2번째, 3번째 염기부터 시작해 코돈으로 나눕니다.</li>
+        <li><strong>-1, -2, -3</strong>: 입력 서열의 역상보 서열(reverse complement)을 기준으로 동일한 방식으로 나눕니다.</li>
+      </ul>
+      <p>위 옵션 영역의 프레임 칩을 클릭해 원하는 프레임만 켜고 끌 수 있습니다.</p>
+
+      <h2>유전암호표(Genetic Code Table) 선택</h2>
+      <p>대부분의 생물은 표준 유전암호(Standard code)를 사용하지만, 미토콘드리아나 일부 미생물은 코돈-아미노산 대응 규칙이 다릅니다. 이 도구는 NCBI가 정의한 <strong>18종의 유전암호표</strong>(표준, 척추동물/무척추동물/효모/곰팡이 등 각종 미토콘드리아 코드, 세균·고균·식물 색소체 코드 등)를 지원합니다. 분석 대상 생물에 맞는 표를 선택하세요.</p>
+
+      <h2>ORF(Open Reading Frame) 자동 감지</h2>
+      <p>이 도구는 각 프레임에서 시작코돈(해당 유전암호표에서 개시코돈으로 정의된 코돈)부터 다음 정지코돈까지의 구간을 <strong>ORF</strong>로 인식해 초록색으로 강조 표시하고, 위치와 길이를 목록으로 정리합니다. 정지코돈은 빨간색으로 표시됩니다.</p>
+
+      <h2>IUPAC 모호성 코드와 미확정 코돈</h2>
+      <p>R, Y, N 등 IUPAC 모호성 코드가 포함된 코돈은 가능한 모든 조합을 계산해, 결과 아미노산이 하나로 결정되면 그 아미노산을, 여러 개로 갈리면 <strong>X(Xaa, 미확정)</strong>를 출력합니다.</p>
+
+      <h2>출력 형식</h2>
+      <ul>
+        <li><strong>Compact</strong>: 아미노산을 한 글자 코드로, 공백 없이 표시합니다 (예: MAIH...). 정지코돈은 <code>*</code>로 표시됩니다.</li>
+        <li><strong>Verbose</strong>: Ala, Gly, Stop처럼 세 글자 코드로, 공백을 두고 표시합니다.</li>
+      </ul>
+      <p>복사하기·다운로드 버튼은 각 프레임을 <code>&gt;서열이름_frame+1</code> 형식의 FASTA 헤더로 구분한 Compact 형식 텍스트를 생성합니다.</p>
+
+      <h2>사용 방법</h2>
+      <ol>
+        <li>위 입력창에 DNA/RNA 서열(또는 FASTA 형식)을 붙여넣습니다.</li>
+        <li>필요하다면 유전암호표를 선택하고, 확인하고 싶은 리딩프레임만 켭니다.</li>
+        <li>Compact/Verbose 출력 형식을 선택합니다.</li>
+        <li>결과에서 ORF(초록색 강조)와 정지코돈(빨간색)을 확인하고, 필요하면 결과를 복사하거나 FASTA로 다운로드합니다.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose">
+      <h2>자주 묻는 질문</h2>
+      <details class="faq-item" open>
+        <summary>DNA를 단백질로 번역한다는 것은 어떤 의미인가요?</summary>
+        <p>DNA(또는 mRNA) 서열을 3개 염기 단위(코돈)로 나누고, 유전암호표에 따라 각 코돈을 해당하는 아미노산으로 치환하는 과정입니다. 그 결과로 얻어지는 아미노산 서열이 단백질의 1차 구조입니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>리딩프레임이 6개인 이유는 무엇인가요?</summary>
+        <p>정방향 가닥에서 시작 위치를 하나씩 옮긴 3개 프레임(+1, +2, +3)과, 역상보 가닥에서 마찬가지로 3개 프레임(-1, -2, -3)이 존재하기 때문에 총 6개의 번역 가능성이 생깁니다. 실제 유전자가 어느 프레임에 있는지 모를 때 6프레임을 모두 확인합니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>미토콘드리아 유전암호표도 지원하나요?</summary>
+        <p>네. 척추동물, 무척추동물, 효모, 곰팡이 등 NCBI가 정의한 18종의 유전암호표(표준 코드 포함)를 선택할 수 있습니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>ORF 강조 표시는 어떤 기준으로 계산되나요?</summary>
+        <p>선택한 유전암호표에서 시작코돈으로 정의된 코돈이 나온 시점부터, 다음 정지코돈이 나올 때까지(또는 프레임 끝까지)를 하나의 ORF로 간주합니다. 여러 개의 ORF가 있으면 길이순으로 정렬해 보여줍니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>입력한 서열이 서버로 전송되나요?</summary>
+        <p>아니요. 모든 번역 계산은 자바스크립트로 브라우저 내부에서만 이루어지며 서버로 전송되거나 저장되지 않습니다.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>BioOnSun</h4>
+        <p class="small">무료 온라인 생물정보학 도구 모음입니다. 모든 계산은 여러분의 브라우저 안에서만 이루어지며, 입력한 서열 데이터는 서버로 전송되거나 저장되지 않습니다.</p>
+      </div>
+      <div>
+        <h4>도구</h4>
+        <ul>
+          <li><a href="reverse-complement.html">Reverse Complement</a></li>
+          <li><a href="translate.html">DNA → 단백질 번역기</a></li>
+          <li><span class="small">GC 함량 계산기 (준비 중)</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>정보</h4>
+        <ul>
+          <li><a href="about.html">소개</a></li>
+          <li><a href="privacy.html">개인정보 처리방침</a></li>
+          <li><a href="contact.html">문의하기</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-portal-link"><a href="/">← juonsun.com의 다른 서비스 보기</a></div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 BioOnSun (juonsun.com/bioonsun). All rights reserved.</span>
+      <span class="updated-note">최종 업데이트: 2026년 8월</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/translate.js"></script>
+</body>
+</html>

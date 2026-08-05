@@ -16,6 +16,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/reverse-complement.html"/>
   </url>
   <url>
+    <loc>https://www.juonsun.com/bioonsun/translate.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/translate.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/translate.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/translate.html"/>
+  </url>
+  <url>
     <loc>https://www.juonsun.com/bioonsun/about.html</loc>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/about.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/about.html"/>
@@ -45,6 +51,12 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/reverse-complement.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/reverse-complement.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/reverse-complement.html"/>
+  </url>
+  <url>
+    <loc>https://www.juonsun.com/bioonsun/en/translate.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/translate.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/translate.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/translate.html"/>
   </url>
   <url>
     <loc>https://www.juonsun.com/bioonsun/en/about.html</loc>
