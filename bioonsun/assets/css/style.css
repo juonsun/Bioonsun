@@ -92,13 +92,14 @@ img { max-width: 100%; display: block; }
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 13px;
 }
 
 .main-nav a {
   color: var(--color-text-muted);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.87rem;
+  white-space: nowrap;
 }
 .main-nav a:hover,
 .main-nav a.active {
@@ -138,7 +139,7 @@ img { max-width: 100%; display: block; }
   font-size: 1.1rem;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 1040px) {
   .main-nav {
     position: fixed;
     top: 64px;
@@ -796,4 +797,81 @@ table.gc-table tbody tr.active-row {
   background: #fdf1e8;
   color: #a85d1f;
   border: 1px solid #f0d5b8;
+}
+
+/* ---------- Sequence alignment tool ---------- */
+
+.align-input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 16px 0;
+}
+@media (max-width: 700px) {
+  .align-input-grid { grid-template-columns: 1fr; }
+}
+.align-input-col .seq-box { min-height: 130px; }
+
+.align-warning {
+  background: #fdf1e8;
+  color: #a85d1f;
+  border: 1px solid #f0d5b8;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.86rem;
+  margin: 12px 0;
+}
+.align-warning-error {
+  background: #fdeceb;
+  color: #b23b2e;
+  border-color: #f3c6c0;
+}
+
+.align-verdict {
+  font-weight: 800;
+  font-size: 1.05rem;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  margin: 18px 0;
+  border: 1px solid transparent;
+}
+.align-verdict.match {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  border-color: var(--color-primary);
+}
+.align-verdict.partial {
+  background: #fdf1e8;
+  color: #a85d1f;
+  border-color: #f0d5b8;
+}
+.align-verdict.mismatch {
+  background: #fdeceb;
+  color: #b23b2e;
+  border-color: #f3c6c0;
+}
+
+.align-viewer {
+  background: var(--color-code-bg);
+  color: var(--color-code-text);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  white-space: pre;
+  margin: 10px 0 20px;
+  min-height: 60px;
+}
+
+.align-diff-box {
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--color-text);
+  word-break: break-word;
+  margin: 10px 0 20px;
 }

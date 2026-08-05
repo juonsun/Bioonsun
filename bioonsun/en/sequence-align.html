@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/bioonsun/favicon.svg" type="image/svg+xml">
+<title>Sequence Alignment Tool — Compare Two DNA/RNA/Protein Sequences | BioOnSun</title>
+<meta name="description" content="Paste two DNA, RNA, or protein sequences and align them with Needleman-Wunsch (global) or Smith-Waterman (local) algorithms to see percent identity and exactly where they differ — free, computed instantly in your browser.">
+<link rel="canonical" href="https://juonsun.com/bioonsun/en/sequence-align.html">
+<link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/sequence-align.html">
+<link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/sequence-align.html">
+<link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/sequence-align.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is sequence alignment?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sequence alignment arranges two or more sequences side by side to show which positions match, which differ, and where gaps need to be inserted. This tool finds the mathematically optimal alignment using the Needleman-Wunsch (global) and Smith-Waterman (local) algorithms." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between global and local alignment?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Global alignment (Needleman-Wunsch) aligns both sequences from end to end. Local alignment (Smith-Waterman) finds only the most similar sub-region between the two sequences. Use global alignment when comparing sequences of similar length in full, and local alignment when checking whether a short sequence appears somewhere within a much longer one." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between identity and similarity?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Identity is the percentage of aligned positions that are exactly the same character. Similarity applies only to protein sequences and additionally counts substitutions that are not identical but score positively under the BLOSUM62 matrix (chemically similar residues)." }
+    },
+    {
+      "@type": "Question",
+      "name": "What scoring scheme is used for protein sequences?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Protein sequences are scored with the widely used BLOSUM62 substitution matrix. DNA/RNA sequences use match and mismatch scores that you can set yourself." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a sequence length limit?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — each sequence is limited to 2,000 characters so the alignment stays fast in the browser. The computation itself runs in a Web Worker in the background, so the page never freezes while you type." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my sequence data sent to a server?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. All alignment computation happens locally in your browser using JavaScript. Nothing is transmitted to or stored on any server." }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="brand-logo">B</span>Bio<span class="brand-dot">On</span>Sun</a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="reverse-complement.html">Reverse Complement</a>
+      <a href="gc-content.html">GC Content Calculator</a>
+      <a href="translate.html">DNA→Protein Translator</a>
+      <a href="fasta-cleanup.html">FASTA Cleanup Tool</a>
+      <a href="sequence-align.html" class="active">Sequence Alignment</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <div class="lang-switch">
+        <a href="../sequence-align.html">KO</a>
+        <a href="sequence-align.html" class="active">EN</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding-bottom: 20px;">
+    <div class="container">
+      <span class="pill">DNA / RNA / protein sequence tool</span>
+      <h1>Sequence Alignment Tool</h1>
+      <p class="lead">Paste two sequences and this tool computes the optimal alignment using Needleman-Wunsch (global) or Smith-Waterman (local) algorithms, showing you how similar they are and exactly where they differ. Supports DNA, RNA, and protein sequences.</p>
+    </div>
+  </section>
+
+  <section style="padding-top: 0; border-top: none;">
+    <div class="container">
+      <div class="tool-app" data-tool="sequence-align" data-i18n="en"
+           data-worker="../assets/js/sequence-align-worker.js"
+           data-sample-dna-a="&gt;reference_plasmid&#10;ATGGCTAGCTTACCGATCGTAGCTAGCTACGATCGATCGTAGCTAGCATCGATCGTAGCTAGCATCGATGCTAGCTAGCATCGATCGATCGTAGCATCG"
+           data-sample-dna-b="&gt;sanger_read_sample&#10;ATGGCTAGCTTAAAGATCGTAGCTAGCTACGATCGATCGTTAGCATCGATCGTAGCTAGCATCGATGTTAGCTAGCATCGATCGATCGTAGCATCG"
+           data-sample-protein-a="&gt;species_A_lysozyme_fragment&#10;MKTAYIAKQRQISFVKSHFSRQLEERLGLIEVQAPILSRVGDGTQDNLSGAEKAVQVKVGGSEQ"
+           data-sample-protein-b="&gt;species_B_lysozyme_fragment&#10;MKTAYIAKQRQISFVKSHFSRQLEERLGLIEVQAPILSRVGDGTQDNLSAAEKAVQVQVGGSDQ">
+
+        <label class="field-label"><span>Sequence type</span></label>
+        <div class="mode-tabs" data-role="type-tabs">
+          <button type="button" class="mode-tab active" data-value="auto">Auto-detect</button>
+          <button type="button" class="mode-tab" data-value="dna">DNA</button>
+          <button type="button" class="mode-tab" data-value="rna">RNA</button>
+          <button type="button" class="mode-tab" data-value="protein">Protein</button>
+        </div>
+
+        <label class="field-label" style="margin-top: 14px;"><span>Alignment mode</span></label>
+        <div class="mode-tabs" data-role="align-mode-tabs">
+          <button type="button" class="mode-tab active" data-value="global">Global</button>
+          <button type="button" class="mode-tab" data-value="local">Local</button>
+        </div>
+
+        <div class="align-input-grid">
+          <div class="align-input-col">
+            <label class="field-label" for="align-input-a"><span>Sequence A</span></label>
+            <textarea id="align-input-a" class="seq-box" data-role="input-a" spellcheck="false" placeholder="Paste sequence A (plain sequence or FASTA with a &gt;header)"></textarea>
+          </div>
+          <div class="align-input-col">
+            <label class="field-label" for="align-input-b"><span>Sequence B</span></label>
+            <textarea id="align-input-b" class="seq-box" data-role="input-b" spellcheck="false" placeholder="Paste sequence B (plain sequence or FASTA with a &gt;header)"></textarea>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn" data-role="sample-dna">Load DNA sample</button>
+          <button type="button" class="btn" data-role="sample-protein">Load protein sample</button>
+          <button type="button" class="btn btn-ghost" data-role="clear">Clear</button>
+        </div>
+
+        <div class="translate-options">
+          <div class="option-group" data-role="nt-score-group">
+            <label class="field-label" for="align-match"><span>Match score</span></label>
+            <input type="number" id="align-match" class="select-input" data-role="match-score" value="1" step="1">
+          </div>
+          <div class="option-group" data-role="nt-score-group">
+            <label class="field-label" for="align-mismatch"><span>Mismatch score</span></label>
+            <input type="number" id="align-mismatch" class="select-input" data-role="mismatch-score" value="-1" step="1">
+          </div>
+          <div class="option-group" data-role="protein-matrix-group" hidden>
+            <label class="field-label"><span>Substitution matrix</span></label>
+            <div class="select-input" style="background: var(--color-bg); cursor: default; color: var(--color-text-muted);">BLOSUM62 (fixed)</div>
+          </div>
+          <div class="option-group">
+            <label class="field-label" for="align-gapopen"><span>Gap open</span></label>
+            <input type="number" id="align-gapopen" class="select-input" data-role="gap-open" value="10" step="0.5" min="0">
+          </div>
+          <div class="option-group">
+            <label class="field-label" for="align-gapextend"><span>Gap extend</span></label>
+            <input type="number" id="align-gapextend" class="select-input" data-role="gap-extend" value="0.5" step="0.1" min="0">
+          </div>
+        </div>
+
+        <div class="align-warning" data-role="type-mismatch-warning" hidden></div>
+        <div class="align-warning" data-role="truncate-warning" hidden></div>
+        <div class="align-warning align-warning-error" data-role="error" hidden></div>
+        <p class="result-placeholder" data-role="loading" hidden>Computing alignment…</p>
+
+        <div data-role="result-wrap" hidden>
+          <div class="align-verdict" data-role="verdict"></div>
+
+          <div class="gc-summary-grid" data-role="stats">
+            <div class="gc-stat-tile gc-stat-highlight">
+              <span class="gc-stat-label">Identity</span>
+              <strong data-role="stat-identity">--</strong>
+            </div>
+            <div class="gc-stat-tile" data-role="stat-similarity-tile" hidden>
+              <span class="gc-stat-label">Similarity</span>
+              <strong data-role="stat-similarity">--</strong>
+            </div>
+            <div class="gc-stat-tile">
+              <span class="gc-stat-label">Alignment length</span>
+              <strong data-role="stat-length">0</strong>
+            </div>
+            <div class="gc-stat-tile">
+              <span class="gc-stat-label">Gaps</span>
+              <strong data-role="stat-gaps">0</strong>
+            </div>
+            <div class="gc-stat-tile">
+              <span class="gc-stat-label">Score</span>
+              <strong data-role="stat-score">0</strong>
+            </div>
+          </div>
+
+          <label class="field-label"><span>Alignment</span></label>
+          <div class="align-viewer" data-role="viewer"></div>
+
+          <label class="field-label"><span>Differing alignment columns</span></label>
+          <div class="align-diff-box" data-role="diff-list"></div>
+
+          <div class="btn-row">
+            <button type="button" class="btn btn-primary" data-role="copy">Copy report</button>
+            <button type="button" class="btn" data-role="download">Download report (.txt)</button>
+          </div>
+        </div>
+
+        <div class="privacy-note">
+          🔒 Everything is computed right here in your browser (the alignment runs in a Web Worker, so the page never freezes while you type). Your sequence is never sent to or stored on a server.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="ad-slot">Ad placement (to be added after Google AdSense approval)</div>
+  </div>
+
+  <section>
+    <div class="container prose">
+      <h2>What is sequence alignment?</h2>
+      <p>Sequence alignment arranges two or more DNA, RNA, or protein sequences side by side to find which positions match, which differ, and where insertions or deletions (gaps) occur. When two sequences differ in length, gaps (<code>-</code>) must be inserted somewhere so the sequences line up as well as possible — and the number of possible alignments grows explosively as sequences get longer. This tool uses dynamic programming to always find the <strong>mathematically optimal alignment</strong> for the scoring scheme you choose.</p>
+
+      <h2>Global vs. local alignment</h2>
+      <ul>
+        <li><strong>Global alignment (Needleman-Wunsch)</strong>: aligns both sequences from end to end. Best when the sequences are similar in length and you want to compare them in full — for example, comparing two alleles of the same gene, or verifying a recombinant plasmid sequencing result.</li>
+        <li><strong>Local alignment (Smith-Waterman)</strong>: finds only the most similar sub-region between the two sequences. Best when a short sequence (a primer, a protein domain) might appear somewhere within a much longer sequence, or when unrelated flanking sequence (vector backbone, adapters) surrounds the region you actually care about.</li>
+      </ul>
+
+      <h2>Why compare two sequences?</h2>
+      <p>Pairwise sequence comparison comes up constantly in day-to-day molecular biology work.</p>
+      <ul>
+        <li><strong>Verifying sequencing results</strong>: quickly check whether a Sanger read or cloning result exactly matches an expected reference sequence, and exactly where it doesn't.</li>
+        <li><strong>Detecting variants and mutations</strong>: compare wild-type and mutant sequences to pinpoint exactly where substitutions, insertions, or deletions occur.</li>
+        <li><strong>Checking primer/oligo binding sites</strong>: use local alignment to see how well a designed primer matches a specific region of a target sequence.</li>
+        <li><strong>Comparing orthologs and paralogs</strong>: examine conserved regions and differences between protein sequences from different species or gene families.</li>
+      </ul>
+
+      <h2>Scoring</h2>
+      <p>An alignment algorithm needs a way to judge "which alignment is better." This tool uses an <strong>affine gap penalty</strong>, charging a different cost for opening a new gap versus extending an existing one — biologically, one longer gap is often more plausible than several short ones scattered around.</p>
+      <ul>
+        <li><strong>DNA/RNA</strong>: uses match and mismatch scores you set directly. Defaults are +1 for a match and -1 for a mismatch.</li>
+        <li><strong>Protein</strong>: uses the <strong>BLOSUM62</strong> substitution matrix, the default used by NCBI BLASTP and most protein aligners. Substitutions between chemically similar amino acids (e.g. L↔I) score positively even though they aren't identical, while substitutions between very different residues score negatively. The <code>:</code> symbol in the alignment marks these "similar but not identical" positions.</li>
+        <li><strong>Gap open / gap extend</strong>: set the cost of opening a new gap and the additional cost of extending it by one more position. The defaults (10 / 0.5) follow the convention used by widely adopted tools such as EMBOSS.</li>
+      </ul>
+
+      <h2>Reading the identity score</h2>
+      <p>Identity is the percentage of aligned positions that are exactly identical. If two sequences are the <strong>same length with zero gaps and 100% identity</strong>, they are exactly the same sequence; otherwise, a higher identity percentage means the sequences are more similar. In local alignment, identity is calculated <strong>only within the matched region</strong> that was found — any unaligned sequence before or after it is not counted.</p>
+
+      <h2>How to use it</h2>
+      <ol>
+        <li>Paste the two sequences you want to compare into the Sequence A and Sequence B boxes (plain sequence or FASTA with a <code>&gt;</code> header both work; if multiple records are pasted, only the first one in each box is used).</li>
+        <li>Choose the sequence type (auto-detect / DNA / RNA / protein) and alignment mode (global / local).</li>
+        <li>Adjust the match/mismatch scores or gap penalties if needed.</li>
+        <li>Review the identity, the alignment itself, and the list of differing positions, then copy or download the report.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose">
+      <h2>Frequently asked questions</h2>
+      <details class="faq-item" open>
+        <summary>What is sequence alignment?</summary>
+        <p>Sequence alignment arranges two or more sequences side by side to show which positions match, which differ, and where gaps need to be inserted. This tool finds the mathematically optimal alignment using the Needleman-Wunsch (global) and Smith-Waterman (local) algorithms.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What is the difference between global and local alignment?</summary>
+        <p>Global alignment (Needleman-Wunsch) aligns both sequences from end to end. Local alignment (Smith-Waterman) finds only the most similar sub-region between the two sequences. Use global alignment when comparing sequences of similar length in full, and local alignment when checking whether a short sequence appears somewhere within a much longer one.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What is the difference between identity and similarity?</summary>
+        <p>Identity is the percentage of aligned positions that are exactly the same character. Similarity applies only to protein sequences and additionally counts substitutions that are not identical but score positively under the BLOSUM62 matrix (chemically similar residues).</p>
+      </details>
+      <details class="faq-item">
+        <summary>What scoring scheme is used for protein sequences?</summary>
+        <p>Protein sequences are scored with the widely used BLOSUM62 substitution matrix. DNA/RNA sequences use match and mismatch scores that you can set yourself.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is there a sequence length limit?</summary>
+        <p>Yes — each sequence is limited to 2,000 characters so the alignment stays fast in the browser. The computation itself runs in a Web Worker in the background, so the page never freezes while you type.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is my sequence data sent to a server?</summary>
+        <p>No. All alignment computation happens locally in your browser using JavaScript. Nothing is transmitted to or stored on any server.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>BioOnSun</h4>
+        <p class="small">A free collection of online bioinformatics tools. All calculations run in your browser only — sequence data is never sent to or stored on our servers.</p>
+      </div>
+      <div>
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="reverse-complement.html">Reverse Complement</a></li>
+          <li><a href="gc-content.html">GC Content Calculator</a></li>
+          <li><a href="translate.html">DNA → Protein Translator</a></li>
+          <li><a href="fasta-cleanup.html">FASTA Cleanup Tool</a></li>
+          <li><a href="sequence-align.html">Sequence Alignment</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Info</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-portal-link"><a href="/">← See other services on juonsun.com</a></div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 BioOnSun (juonsun.com/bioonsun). All rights reserved.</span>
+      <span class="updated-note">Last updated: August 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/sequence-align-core.js"></script>
+<script src="../assets/js/sequence-align.js"></script>
+</body>
+</html>

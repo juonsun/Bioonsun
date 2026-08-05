@@ -34,6 +34,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/fasta-cleanup.html"/>
   </url>
   <url>
+    <loc>https://www.juonsun.com/bioonsun/sequence-align.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/sequence-align.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/sequence-align.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/sequence-align.html"/>
+  </url>
+  <url>
     <loc>https://www.juonsun.com/bioonsun/about.html</loc>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/about.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/about.html"/>
@@ -81,6 +87,12 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/fasta-cleanup.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/fasta-cleanup.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/fasta-cleanup.html"/>
+  </url>
+  <url>
+    <loc>https://www.juonsun.com/bioonsun/en/sequence-align.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/sequence-align.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/sequence-align.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/sequence-align.html"/>
   </url>
   <url>
     <loc>https://www.juonsun.com/bioonsun/en/about.html</loc>
