@@ -759,3 +759,41 @@ table.gc-table tbody tr.active-row {
   background: var(--color-primary-light);
   font-weight: 700;
 }
+
+/* ---------- FASTA cleanup tool ---------- */
+
+.option-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--color-text);
+  margin-top: 10px;
+  cursor: pointer;
+}
+.option-checkbox:first-of-type { margin-top: 6px; }
+.option-checkbox input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.status-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 999px;
+  display: inline-block;
+  margin: 2px 4px 2px 0;
+  white-space: nowrap;
+}
+.status-badge.ok {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+.status-badge.warn {
+  background: #fdf1e8;
+  color: #a85d1f;
+  border: 1px solid #f0d5b8;
+}

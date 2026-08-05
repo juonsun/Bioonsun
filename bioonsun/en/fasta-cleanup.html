@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/bioonsun/favicon.svg" type="image/svg+xml">
+<title>FASTA Cleanup Tool — Fix Line Wrapping, Whitespace & Headers | BioOnSun</title>
+<meta name="description" content="Clean up messy FASTA sequences for free. Re-wrap line width, strip whitespace and stray digits, auto-name headerless sequences, and fix duplicate headers — all computed instantly in your browser.">
+<link rel="canonical" href="https://juonsun.com/bioonsun/en/fasta-cleanup.html">
+<link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/fasta-cleanup.html">
+<link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/fasta-cleanup.html">
+<link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/fasta-cleanup.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What problem does the FASTA cleanup tool solve?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sequences copied from different sources often have inconsistent line-wrap widths, stray whitespace, tabs, or leftover position numbers mixed into the sequence, missing headers, or duplicate header names. This tool detects and fixes these issues automatically, producing standard FASTA output." }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to sequences without a header?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A sequence block with no header line (starting with >) is automatically given a numbered name, such as sequence_1, and flagged with an 'Auto-named' badge in the results table." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I keep alignment gap characters (-)?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Turning on the 'Keep alignment gap characters (-)' option preserves hyphens found in sequence alignment output instead of stripping them." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my sequence data sent to a server?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. All cleanup happens locally in your browser using JavaScript. Nothing is transmitted to or stored on any server." }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="brand-logo">B</span>Bio<span class="brand-dot">On</span>Sun</a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="reverse-complement.html">Reverse Complement</a>
+      <a href="gc-content.html">GC Content Calculator</a>
+      <a href="translate.html">DNA→Protein Translator</a>
+      <a href="fasta-cleanup.html" class="active">FASTA Cleanup Tool</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <div class="lang-switch">
+        <a href="../fasta-cleanup.html">KO</a>
+        <a href="fasta-cleanup.html" class="active">EN</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding-bottom: 20px;">
+    <div class="container">
+      <span class="pill">DNA / RNA sequence tool</span>
+      <h1>FASTA Cleanup Tool</h1>
+      <p class="lead">Paste a messy sequence and this tool automatically fixes line wrapping, whitespace, and header formatting into tidy FASTA. Headerless sequences get an auto-generated name, and duplicate headers are automatically disambiguated.</p>
+    </div>
+  </section>
+
+  <section style="padding-top: 0; border-top: none;">
+    <div class="container">
+      <div class="tool-app" data-tool="fasta-cleanup" data-i18n="en" data-sample="ATGCGTAC GTTAGCatgcgtacgttagc&#10;123 ATGC GTTAGCAT&#10;&#10;&gt;demo_seq&#10;ATG CGT ACG TTA GCA TGC GTA CGT TAG CAT GCG TAC GTT AGC ATG CGT ACG TTA GCA TGC&#10;&#10;&gt;demo_seq&#10;atgcgtacgttagcatgcgtacgttagcatgcgtacgttagcatgcgtacgttagcatgcgtacgttagcatgcgtacg&#10;&#10;&gt;gapped_alignment&#10;ATG--CGT-ACGTT AGCATGCGT---ACGTTAGCATGCGTACGTTAGCATGCGTACGTTAGCATGCGTACGTTAGCATG">
+
+        <div class="translate-options">
+          <div class="option-group">
+            <label class="field-label" for="fc-wrap"><span>Line wrap width</span></label>
+            <select id="fc-wrap" class="select-input" data-role="wrap-width">
+              <option value="60" selected>60 characters (standard FASTA convention)</option>
+              <option value="70">70 characters</option>
+              <option value="80">80 characters</option>
+              <option value="100">100 characters</option>
+              <option value="0">No wrapping (single line)</option>
+            </select>
+          </div>
+          <div class="option-group">
+            <label class="field-label" for="fc-case"><span>Letter case</span></label>
+            <select id="fc-case" class="select-input" data-role="case-mode">
+              <option value="upper" selected>Convert to uppercase</option>
+              <option value="lower">Convert to lowercase</option>
+              <option value="keep">Keep as entered</option>
+            </select>
+          </div>
+          <div class="option-group">
+            <label class="field-label"><span>Extra options</span></label>
+            <label class="option-checkbox"><input type="checkbox" data-role="keep-gaps"> Keep alignment gap characters (-)</label>
+            <label class="option-checkbox"><input type="checkbox" data-role="underscore-headers"> Replace spaces in headers with underscores</label>
+          </div>
+        </div>
+
+        <label class="field-label" for="fc-input">
+          <span>Input sequence (messy FASTA, multi-FASTA, headerless sequences all supported)</span>
+        </label>
+        <textarea id="fc-input" class="seq-box" data-role="input" spellcheck="false" placeholder="Paste sequences copied from different sources, inconsistently wrapped FASTA, or headerless sequences as-is"></textarea>
+
+        <div class="btn-row">
+          <button type="button" class="btn" data-role="sample">Load sample sequence</button>
+          <button type="button" class="btn btn-ghost" data-role="clear">Clear</button>
+        </div>
+
+        <div class="stats-row">
+          <span>Records: <strong data-role="stat-records">0</strong></span>
+          <span>Total length: <strong data-role="stat-length">0</strong> nt</span>
+          <span>Characters removed: <strong data-role="stat-removed">0</strong></span>
+          <span>Auto-named: <strong data-role="stat-autoheader">0</strong></span>
+          <span>Duplicate names fixed: <strong data-role="stat-dupfix">0</strong></span>
+          <span>Empty records excluded: <strong data-role="stat-excluded">0</strong></span>
+        </div>
+
+        <div data-role="table-wrap" hidden>
+          <label class="field-label"><span>Cleanup preview</span></label>
+          <div class="table-scroll">
+            <table class="gc-table">
+              <thead>
+                <tr><th>Name</th><th>Length (nt)</th><th>Status</th></tr>
+              </thead>
+              <tbody data-role="record-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <label class="field-label" for="fc-output">
+          <span>Cleaned FASTA</span>
+        </label>
+        <textarea id="fc-output" class="seq-box" data-role="output" readonly spellcheck="false"></textarea>
+
+        <div class="btn-row">
+          <button type="button" class="btn btn-primary" data-role="copy">Copy result</button>
+          <button type="button" class="btn" data-role="download">Download as FASTA</button>
+        </div>
+
+        <div class="privacy-note">
+          🔒 Everything is computed right here in your browser. Your sequence is never sent to or stored on a server.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="ad-slot">Ad placement (to be added after Google AdSense approval)</div>
+  </div>
+
+  <section>
+    <div class="container prose">
+      <h2>Why does FASTA need cleaning up?</h2>
+      <p>Sequences copied from papers, databases, or sequencer software often carry small but disruptive problems: inconsistent line-wrap widths, stray position numbers, spaces, or tabs mixed into the sequence, missing headers, or the same header name repeated more than once. This tool automatically finds and fixes these issues, then outputs a standard, clean FASTA file.</p>
+
+      <h2>What this tool fixes automatically</h2>
+      <ul>
+        <li><strong>Sequence body cleanup</strong>: strips whitespace, tabs, digits (leftover position numbers, for example), and any other unrecognized characters from the sequence body.</li>
+        <li><strong>Auto-naming headerless sequences</strong>: a sequence block with no <code>&gt;</code> header gets a numbered name automatically, such as <code>sequence_1</code>.</li>
+        <li><strong>Duplicate header disambiguation</strong>: when the same header name appears more than once, it's automatically suffixed with <code>_2</code>, <code>_3</code>, and so on so every record stays distinguishable.</li>
+        <li><strong>Dropping empty records</strong>: records that consist of a header with no actual sequence are automatically excluded from the output.</li>
+      </ul>
+
+      <h2>Options you control</h2>
+      <ul>
+        <li><strong>Line wrap width</strong>: choose 60, 70, 80, or 100 characters, or output each sequence on a single line. 60 characters is the most widely used FASTA convention.</li>
+        <li><strong>Letter case</strong>: convert everything to uppercase or lowercase, or leave the original case untouched.</li>
+        <li><strong>Keep alignment gap characters (-)</strong>: if you're pasting in alignment output, this preserves hyphens instead of stripping them.</li>
+        <li><strong>Replace spaces in headers with underscores</strong>: header names with spaces can get truncated by some tools, so this converts spaces to underscores for a safer identifier.</li>
+      </ul>
+
+      <h2>How to use it</h2>
+      <ol>
+        <li>Paste the sequence you want to clean up (FASTA, multi-FASTA, or headerless — all supported) into the input box above.</li>
+        <li>Choose the line wrap width, letter case, and any extra options you need.</li>
+        <li>Check the results table for any records that were auto-named or had a duplicate name fixed.</li>
+        <li>Copy the cleaned FASTA, or download it as a file.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose">
+      <h2>Frequently asked questions</h2>
+      <details class="faq-item" open>
+        <summary>What problem does the FASTA cleanup tool solve?</summary>
+        <p>Sequences copied from different sources often have inconsistent line-wrap widths, stray whitespace, tabs, or leftover position numbers mixed into the sequence, missing headers, or duplicate header names. This tool detects and fixes these issues automatically, producing standard FASTA output.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens to sequences without a header?</summary>
+        <p>A sequence block with no header line (starting with &gt;) is automatically given a numbered name, such as sequence_1, and flagged with an "Auto-named" badge in the results table.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I keep alignment gap characters (-)?</summary>
+        <p>Yes. Turning on the "Keep alignment gap characters (-)" option preserves hyphens found in sequence alignment output instead of stripping them.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can it clean up sequences with digits or spaces mixed in?</summary>
+        <p>Yes. Any non-letter character in the sequence body — spaces, tabs, digits such as leftover position numbers — is automatically removed, and the count of removed characters is shown in the results.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is my sequence data sent to a server?</summary>
+        <p>No. All cleanup happens locally in your browser using JavaScript. Nothing is transmitted to or stored on any server.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>BioOnSun</h4>
+        <p class="small">A free collection of online bioinformatics tools. All calculations run in your browser only — sequence data is never sent to or stored on our servers.</p>
+      </div>
+      <div>
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="reverse-complement.html">Reverse Complement</a></li>
+          <li><a href="gc-content.html">GC Content Calculator</a></li>
+          <li><a href="translate.html">DNA → Protein Translator</a></li>
+          <li><a href="fasta-cleanup.html">FASTA Cleanup Tool</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Info</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-portal-link"><a href="/">← See other services on juonsun.com</a></div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 BioOnSun (juonsun.com/bioonsun). All rights reserved.</span>
+      <span class="updated-note">Last updated: August 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/fasta-cleanup.js"></script>
+</body>
+</html>
