@@ -2,10 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- Portal root -->
-  <url>
-    <loc>https://juonsun.com/</loc>
-  </url>
+  <!-- Portal root (juonsun.com) — 안내/문의/개인정보처리방침만 남아있음. "/"는 /bioonsun/으로 리다이렉트되므로 목록에서 제외 -->
   <url>
     <loc>https://juonsun.com/about.html</loc>
   </url>
@@ -16,7 +13,7 @@
     <loc>https://juonsun.com/contact.html</loc>
   </url>
 
-  <!-- BioOnSun (/bioonsun/) -->
+  <!-- BioOnSun (/bioonsun/) — 실제 juonsun.com 루트가 리다이렉트되는 곳, 전체 도구 페이지 -->
   <url>
     <loc>https://juonsun.com/bioonsun/</loc>
     <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/"/>
@@ -28,6 +25,30 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/reverse-complement.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/reverse-complement.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/reverse-complement.html"/>
+  </url>
+  <url>
+    <loc>https://juonsun.com/bioonsun/translate.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/translate.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/translate.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/translate.html"/>
+  </url>
+  <url>
+    <loc>https://juonsun.com/bioonsun/gc-content.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/gc-content.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/gc-content.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/gc-content.html"/>
+  </url>
+  <url>
+    <loc>https://juonsun.com/bioonsun/fasta-cleanup.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/fasta-cleanup.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/fasta-cleanup.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/fasta-cleanup.html"/>
+  </url>
+  <url>
+    <loc>https://juonsun.com/bioonsun/sequence-align.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/sequence-align.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/sequence-align.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/sequence-align.html"/>
   </url>
   <url>
     <loc>https://juonsun.com/bioonsun/about.html</loc>
@@ -59,6 +80,30 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/reverse-complement.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/reverse-complement.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/reverse-complement.html"/>
+  </url>
+  <url>
+    <loc>https://juonsun.com/bioonsun/en/translate.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/translate.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/translate.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/translate.html"/>
+  </url>
+  <url>
+    <loc>https://juonsun.com/bioonsun/en/gc-content.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/gc-content.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/gc-content.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/gc-content.html"/>
+  </url>
+  <url>
+    <loc>https://juonsun.com/bioonsun/en/fasta-cleanup.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/fasta-cleanup.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/fasta-cleanup.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/fasta-cleanup.html"/>
+  </url>
+  <url>
+    <loc>https://juonsun.com/bioonsun/en/sequence-align.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/sequence-align.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/sequence-align.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/sequence-align.html"/>
   </url>
   <url>
     <loc>https://juonsun.com/bioonsun/en/about.html</loc>
