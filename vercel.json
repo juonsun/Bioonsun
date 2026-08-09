@@ -2,5 +2,19 @@
   "redirects": [
     { "source": "/", "destination": "/bioonsun/", "permanent": true },
     { "source": "/index.html", "destination": "/bioonsun/", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        { "key": "Content-Type", "value": "application/xml; charset=utf-8" }
+      ]
+    },
+    {
+      "source": "/bioonsun/sitemap.xml",
+      "headers": [
+        { "key": "Content-Type", "value": "application/xml; charset=utf-8" }
+      ]
+    }
   ]
 }
