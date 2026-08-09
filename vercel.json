@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/", "destination": "/bioonsun/", "permanent": true },
+    { "source": "/index.html", "destination": "/bioonsun/", "permanent": true }
+  ]
+}
