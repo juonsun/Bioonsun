@@ -14,7 +14,7 @@
 (function () {
   'use strict';
 
-  var ADMIN_PASSWORD_HASH = 'crypto.subtle.digest('SHA-256',new TextEncoder().encode('Weday1018!')).then(b=>console.log([...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')))'; // sha256("bioonsun2026")
+  var ADMIN_PASSWORD_HASH = 'b0a59f7fc1d463acda5d6fac95fbf6453b07e1f337c7ef4db7d33c6ba7e6f52f'; // sha256("bioonsun2026")
 
   var BT = window.BlogTemplates;
 
