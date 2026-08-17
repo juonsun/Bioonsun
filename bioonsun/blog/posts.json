@@ -1,3 +1,21 @@
 {
-  "posts": []
+  "posts": [
+    {
+      "slug": "2026-08-17-test-page",
+      "date": "2026-08-17",
+      "tags": [
+        "test",
+        "1",
+        "2"
+      ],
+      "ko": {
+        "title": "2026-08-17_확인 페이지",
+        "excerpt": "test"
+      },
+      "en": {
+        "title": "2026-08-17_test page",
+        "excerpt": "test"
+      }
+    }
+  ]
 }

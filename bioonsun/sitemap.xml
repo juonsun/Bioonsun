@@ -127,4 +127,60 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/"/>
   </url>
 
+  <url>
+    <loc>https://www.juonsun.com/bioonsun/blog/2026-08-17-test-page.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/2026-08-17-test-page.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/2026-08-17-test-page.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/2026-08-17-test-page.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/2026-08-17-test-page.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/2026-08-17-test-page.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/2026-08-17-test-page.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/2026-08-17-test-page.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/1.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/1.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/1.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/1.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/1.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/1.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/1.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/1.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/2.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/2.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/2.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/2.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/2.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/2.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/2.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/2.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/test.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/test.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/test.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/test.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/test.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/test.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/test.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/test.html"/>
+  </url>
+
 </urlset>
