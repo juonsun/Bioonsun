@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<title>블로그 글쓰기 (관리자 전용) | BioOnSun</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="brand"><span class="brand-logo">B</span>Bio<span class="brand-dot">On</span>Sun</a>
+    <span class="pill" style="margin-left:auto;">관리자 전용 · noindex</span>
+  </div>
+</header>
+
+<div id="adminGate" class="admin-gate">
+  <span class="pill">Admin</span>
+  <h2 style="margin:10px 0 4px;">블로그 글쓰기</h2>
+  <p class="small">비밀번호를 입력하세요.</p>
+  <input type="password" id="adminPassword" placeholder="비밀번호" autocomplete="off">
+  <div class="admin-gate-error" id="adminGateError"></div>
+  <button class="btn btn-primary" id="adminUnlockBtn" style="width:100%;">확인</button>
+  <p class="admin-hint" style="margin-top:16px;">이 비밀번호는 실수 방지용일 뿐 실제 보안이 아닙니다. 이 페이지 URL은 사이트 어디에도 링크되어 있지 않고 검색엔진에서도 제외(noindex)되어 있습니다.</p>
+</div>
+
+<main id="adminApp" style="display:none;">
+  <div class="container" style="padding: 28px 20px 60px;">
+    <span class="pill">BioOnSun Admin</span>
+    <h1 style="font-size:1.6rem; margin: 8px 0 4px;">블로그 글쓰기</h1>
+    <p class="small">여기서 작성한 글은 서버에 저장되지 않습니다. 아래에서 "zip 생성"을 누르면 완성된 페이지 파일들을 다운로드하고, 그 파일을 로컬 저장소에 넣어 git push 해야 실제로 게시됩니다.</p>
+
+    <div class="admin-warning">
+      <strong>알아두세요.</strong> 이 도구는 서버·DB 없는 정적 사이트 구조를 유지하기 위해 "브라우저에서 작성 → 파일 생성 → git push" 방식으로 동작합니다. 진짜 로그인 보안이 아니므로, 이 페이지의 URL은 절대 공개하거나 사이트 메뉴에 노출하지 마세요.
+      비밀번호를 바꾸려면 <code>assets/js/blog-admin.js</code> 안의 <code>ADMIN_PASSWORD_HASH</code> 값을, 브라우저 개발자 콘솔에서 아래 코드로 새로 만든 해시로 교체하세요:<br>
+      <code>crypto.subtle.digest('SHA-256',new TextEncoder().encode('새비밀번호')).then(b=>console.log([...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')))</code>
+    </div>
+
+    <div class="admin-field">
+      <label>기존 글 목록 (posts.json)</label>
+      <div class="btn-row" style="margin:0 0 8px;">
+        <button class="btn" id="reloadPostsBtn" type="button">사이트에서 새로고침</button>
+        <label class="btn" style="margin:0;">
+          파일에서 불러오기
+          <input type="file" id="postsFileInput" accept="application/json" style="display:none;">
+        </label>
+      </div>
+      <div id="loadStatus" class="admin-status"></div>
+      <div id="existingList"></div>
+    </div>
+
+    <div class="admin-cheatsheet">
+      <strong>본문 작성 문법 (마크다운)</strong> — <code># 제목</code>, <code>**굵게**</code>, <code>- 목록</code>, <code>1. 번호목록</code>, <code>`코드`</code>, 표(GFM) 지원.<br>
+      실무자 팁 박스: <code>&gt; TIP: 내용</code> · 결과 해석 박스: <code>&gt; NOTE: 내용</code> (블록인용문 맨 앞에 TIP: 또는 NOTE: 를 쓰면 자동으로 스타일 박스가 됩니다.)
+    </div>
+
+    <div class="admin-layout">
+      <div>
+        <div class="admin-lang-tabs">
+          <label><input type="radio" name="previewLang" value="ko" checked> 미리보기: 한국어</label>
+          <label><input type="radio" name="previewLang" value="en"> 미리보기: English</label>
+        </div>
+
+        <div class="admin-field">
+          <label>제목 (한국어) *</label>
+          <input type="text" id="fieldTitleKo" placeholder="예: PCR 프라이머 어닐링 온도 잡는 법과 실패 원인 해석">
+        </div>
+        <div class="admin-field">
+          <label>제목 (English) *</label>
+          <input type="text" id="fieldTitleEn" placeholder="e.g. How to Set PCR Primer Annealing Temperature">
+        </div>
+        <div class="admin-field">
+          <label>슬러그 (URL, 영문/숫자/하이픈) *</label>
+          <input type="text" id="fieldSlug" placeholder="pcr-primer-annealing-tips">
+          <div class="admin-hint">제목을 입력하면 자동으로 채워집니다. 필요하면 직접 수정하세요. 이미 게시된 글과 같은 슬러그를 쓰면 해당 글이 수정(덮어쓰기)됩니다.</div>
+        </div>
+        <div class="admin-field">
+          <label>날짜 *</label>
+          <input type="date" id="fieldDate">
+        </div>
+        <div class="admin-field">
+          <label>태그 (쉼표로 구분, # 없이) *</label>
+          <input type="text" id="fieldTags" placeholder="DNA, PCR, Primer">
+        </div>
+        <div class="admin-field">
+          <label>요약 (한국어) *</label>
+          <textarea id="fieldExcerptKo" placeholder="목록/검색결과에 보이는 짧은 요약 (1~2문장)"></textarea>
+        </div>
+        <div class="admin-field">
+          <label>요약 (English) *</label>
+          <textarea id="fieldExcerptEn" placeholder="Short summary shown in the list / search results"></textarea>
+        </div>
+        <div class="admin-field">
+          <label>본문 (한국어, 마크다운) *</label>
+          <textarea class="admin-body" id="fieldBodyKo" placeholder="## 준비물&#10;&#10;- ...&#10;&#10;## 프로토콜&#10;&#10;1. ...&#10;&#10;&gt; TIP: 실무 팁을 여기에 적으세요.&#10;&#10;&gt; NOTE: 결과 해석을 여기에 적으세요."></textarea>
+        </div>
+        <div class="admin-field">
+          <label>본문 (English, Markdown) *</label>
+          <textarea class="admin-body" id="fieldBodyEn" placeholder="## Materials&#10;&#10;- ...&#10;&#10;## Protocol&#10;&#10;1. ...&#10;&#10;&gt; TIP: ...&#10;&#10;&gt; NOTE: ..."></textarea>
+        </div>
+
+        <div id="generateStatus" class="admin-status"></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" id="generateBtn" type="button">zip 생성 및 다운로드</button>
+        </div>
+      </div>
+
+      <div class="admin-preview">
+        <h4>미리보기</h4>
+        <div id="previewBox"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="../assets/js/blog-templates.js"></script>
+<script src="../assets/js/blog-admin.js"></script>
+</body>
+</html>

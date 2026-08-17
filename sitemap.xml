@@ -124,4 +124,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/contact.html"/>
   </url>
 
+  <url>
+    <loc>https://juonsun.com/bioonsun/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/"/>
+  </url>
+
+  <url>
+    <loc>https://juonsun.com/bioonsun/en/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/"/>
+  </url>
+
 </urlset>

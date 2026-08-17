@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /bioonsun/admin/
 
 Sitemap: https://juonsun.com/sitemap.xml
