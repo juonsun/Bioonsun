@@ -43,14 +43,25 @@
     <a href="index.html" class="brand"><span class="brand-logo">B</span>Bio<span class="brand-dot">On</span>Sun</a>
     <nav class="main-nav" id="mainNav">
       <a href="index.html">Home</a>
-      <a href="reverse-complement.html" class="active">Reverse Complement</a>
-      <a href="gc-content.html">GC Content Calculator</a>
-      <a href="translate.html">DNA→Protein Translator</a>
-      <a href="fasta-cleanup.html">FASTA Cleanup Tool</a>
-      <a href="sequence-align.html">Sequence Alignment</a>
-      <a href="blog/index.html">Blog</a>
       <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <div class="nav-dropdown active">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Analysis Tools <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="reverse-complement.html" class="active">Reverse Complement</a>
+          <a href="gc-content.html">GC Content Calculator</a>
+          <a href="translate.html">DNA→Protein Translator</a>
+          <a href="fasta-cleanup.html">FASTA Cleanup Tool</a>
+          <a href="sequence-align.html">Sequence Alignment</a>
+        </div>
+      </div>
+      <a href="blog/index.html">Protocols</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Support <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="contact.html">Contact</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </div>
       <div class="lang-switch">
         <a href="../reverse-complement.html">KO</a>
         <a href="reverse-complement.html" class="active">EN</a>

@@ -157,28 +157,55 @@
     return { head: head, mainJsHref: mainJsHref };
   }
 
+  // Support-group links shown inside the "고객지원 / Support" nav dropdown.
+  // Kept separate from INFO_LINKS (which still drives the footer's "정보"
+  // list, including 소개/About) so the nav's grouping can differ from the
+  // footer's without touching footer output.
+  var SUPPORT_LINKS = [
+    { file: 'contact.html', ko: '문의하기', en: 'Contact' },
+    { file: 'privacy.html', ko: '개인정보 처리방침', en: 'Privacy Policy' }
+  ];
+
   function renderNav(opts) {
-    // opts: { lang, fromDir, active }  active: 'home' | 'blog' | tool file | 'about' | ...
+    // opts: { lang, fromDir, active, selfFile }
+    // active: 'home' | 'about.html' | tool file (e.g. 'reverse-complement.html')
+    //       | 'blog' | 'contact.html' | 'privacy.html'
     var lang = opts.lang;
     var t = function (ko, en) { return lang === 'en' ? en : ko; };
     var homeSeg = pageSegments(lang, ['index.html']);
     var blogSeg = pageSegments(lang, ['blog', 'index.html']);
+    var aboutSeg = pageSegments(lang, ['about.html']);
 
-    var items = [];
-    items.push({ key: 'home', seg: homeSeg, label: t('홈', 'Home') });
-    TOOL_LINKS.forEach(function (tool) {
-      items.push({ key: tool.file, seg: pageSegments(lang, [tool.file]), label: t(tool.ko, tool.en) });
-    });
-    items.push({ key: 'blog', seg: blogSeg, label: t('블로그', 'Blog') });
-    INFO_LINKS.forEach(function (info) {
-      items.push({ key: info.file, seg: pageSegments(lang, [info.file]), label: t(info.ko, info.en) });
-    });
+    function flatLink(seg, key, label) {
+      var href = relFrom(opts.fromDir, seg);
+      var cls = key === opts.active ? ' class="active"' : '';
+      return '      <a href="' + href + '"' + cls + '>' + htmlEscape(label) + '</a>';
+    }
 
-    var navLinks = items.map(function (it) {
-      var href = relFrom(opts.fromDir, it.seg);
-      var cls = it.key === opts.active ? ' class="active"' : '';
-      return '      <a href="' + href + '"' + cls + '>' + htmlEscape(it.label) + '</a>';
-    }).join('\n');
+    function dropdown(groupLabel, entries) {
+      var isActive = entries.some(function (e) { return e.file === opts.active; });
+      var menuLinks = entries.map(function (e) {
+        var href = relFrom(opts.fromDir, pageSegments(lang, [e.file]));
+        var cls = e.file === opts.active ? ' class="active"' : '';
+        return '          <a href="' + href + '"' + cls + '>' + htmlEscape(t(e.ko, e.en)) + '</a>';
+      }).join('\n');
+      return [
+        '      <div class="nav-dropdown' + (isActive ? ' active' : '') + '">',
+        '        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">' + htmlEscape(groupLabel) + ' <span class="nav-caret" aria-hidden="true">▾</span></button>',
+        '        <div class="nav-dropdown-menu">',
+        menuLinks,
+        '        </div>',
+        '      </div>'
+      ].join('\n');
+    }
+
+    var navLinks = [
+      flatLink(homeSeg, 'home', t('홈', 'Home')),
+      flatLink(aboutSeg, 'about.html', t('소개', 'About')),
+      dropdown(t('분석도구', 'Analysis Tools'), TOOL_LINKS),
+      flatLink(blogSeg, 'blog', t('프로토콜', 'Protocols')),
+      dropdown(t('고객지원', 'Support'), SUPPORT_LINKS)
+    ].join('\n');
 
     // lang switch: same page, other language
     var relSegNoLang = opts.fromDir.slice(lang === 'en' ? 1 : 0).concat([opts.selfFile]);
@@ -492,11 +519,16 @@
     formatDateDisplay: formatDateDisplay,
     applyCallouts: applyCallouts,
     pageSegments: pageSegments,
+    renderHead: renderHead,
+    renderNav: renderNav,
+    renderFooter: renderFooter,
+    wrapDocument: wrapDocument,
     renderIndexPage: renderIndexPage,
     renderTagPage: renderTagPage,
     renderPostPage: renderPostPage,
     TOOL_LINKS: TOOL_LINKS,
     INFO_LINKS: INFO_LINKS,
+    SUPPORT_LINKS: SUPPORT_LINKS,
     SITE_BASE: SITE_BASE
   };
 });
