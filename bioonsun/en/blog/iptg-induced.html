@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4140362030045841" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<title>IPTG-Induced Protein Expression in E. coli: Interpreting Expression Patterns and Practical Tips | BioOnSun Blog</title>
+<meta name="description" content="Proteins differ in sequence, structure, and stability, so their expression patterns can vary even under the same conditions. This article summarizes common expression patterns observed by SDS-PAGE and Western blotting, along with key points to check.">
+<link rel="canonical" href="https://juonsun.com/bioonsun/en/blog/iptg-induced.html">
+<link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/iptg-induced.html">
+<link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/iptg-induced.html">
+<link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/iptg-induced.html">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "IPTG-Induced Protein Expression in E. coli: Interpreting Expression Patterns and Practical Tips",
+  "description": "Proteins differ in sequence, structure, and stability, so their expression patterns can vary even under the same conditions. This article summarizes common expression patterns observed by SDS-PAGE and Western blotting, along with key points to check.",
+  "datePublished": "2026-09-14",
+  "dateModified": "2026-09-14",
+  "author": {
+    "@type": "Organization",
+    "name": "BioOnSun"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "BioOnSun"
+  }
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="brand"><span class="brand-logo">B</span>Bio<span class="brand-dot">On</span>Sun</a>
+    <nav class="main-nav" id="mainNav">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Analysis Tools <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="../reverse-complement.html">Reverse Complement</a>
+          <a href="../gc-content.html">GC Content Calculator</a>
+          <a href="../translate.html">DNA→Protein Translator</a>
+          <a href="../fasta-cleanup.html">FASTA Cleanup Tool</a>
+          <a href="../sequence-align.html">Sequence Alignment</a>
+        </div>
+      </div>
+      <a href="index.html" class="active">Protocols</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Support <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="../contact.html">Contact</a>
+          <a href="../privacy.html">Privacy Policy</a>
+        </div>
+      </div>
+      <div class="lang-switch">
+        <a href="../../blog/iptg-induced.html">KO</a>
+        <a href="iptg-induced.html" class="active">EN</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<main>
+  <section class="hero" style="padding-bottom: 10px;">
+    <div class="container">
+      <p class="blog-filter-note" style="margin-bottom:14px;"><a href="index.html">&larr; Back to blog</a></p>
+      <div class="post-header">
+        <h1>IPTG-Induced Protein Expression in E. coli: Interpreting Expression Patterns and Practical Tips</h1>
+        <div class="post-meta-row">
+          <span class="post-date">September 14, 2026</span>
+        </div>
+        <div class="tag-chip-list"><a class="tag-chip" href="tag/대장균-단백질-발현.html">#대장균 단백질 발현</a><a class="tag-chip" href="tag/e-coli-protein-expression.html">#E. coli protein expression</a><a class="tag-chip" href="tag/iptg-induction.html">#IPTG induction</a><a class="tag-chip" href="tag/재조합-단백질-발현.html">#재조합 단백질 발현</a><a class="tag-chip" href="tag/soluble-expression.html">#soluble expression</a><a class="tag-chip" href="tag/insoluble-expression.html">#insoluble expression</a><a class="tag-chip" href="tag/inclusion-body.html">#inclusion body</a><a class="tag-chip" href="tag/protein-refolding.html">#protein refolding</a><a class="tag-chip" href="tag/basal-expression.html">#basal expression</a><a class="tag-chip" href="tag/leaky-expression.html">#leaky expression</a><a class="tag-chip" href="tag/low-protein-expression.html">#low protein expression</a><a class="tag-chip" href="tag/sds-page.html">#SDS-PAGE</a><a class="tag-chip" href="tag/western-blot-multiple-bands.html">#Western blot multiple bands</a><a class="tag-chip" href="tag/protein-degradation.html">#protein degradation</a><a class="tag-chip" href="tag/protein-aggregation.html">#protein aggregation</a><a class="tag-chip" href="tag/reducing-vs-non-reducing-sds-page.html">#reducing vs non-reducing SDS-PAGE</a><a class="tag-chip" href="tag/단백질-발현-최적화.html">#단백질 발현 최적화</a><a class="tag-chip" href="tag/sds-page.html">#SDS-PAGE</a></div>
+      </div>
+    </div>
+  </section>
+  <section style="border-top: none;">
+    <div class="container post-body">
+<p>Proteins differ in sequence, structure, and stability, so their expression patterns can vary even under the same conditions. This article summarizes common expression patterns observed by SDS-PAGE and Western blotting, along with key points to check.</p>
+<h2>[1] The Purpose of Protein Expression Screening</h2>
+<p>Before proceeding with purification, confirm that the target protein is sufficiently expressed in the selected host strain. The two key factors are <strong>expression level</strong> and <strong>solubility</strong>.</p>
+<p>The following samples are used for analysis:</p>
+<ul>
+<li><strong>IPTG(−):</strong> Uninduced control without IPTG</li>
+<li><strong>T, Total:</strong> Total cell lysate</li>
+<li><strong>S, Soluble:</strong> Soluble fraction in the supernatant after centrifugation</li>
+<li><strong>P, Pellet:</strong> Insoluble fraction in the pellet after centrifugation</li>
+</ul>
+<h2>[2] Common Expression Patterns</h2>
+<h3>1. Soluble Expression</h3>
+<p><img src="../../blog/images/iptg-induced/1.png" alt="1"></p>
+<p>After IPTG induction, a band at the expected molecular weight increases in intensity and is clearly visible in both T and S. If the band is weak or absent in P, this suggests that a high proportion of the expressed protein is soluble.</p>
+<p>This pattern is generally favorable for purification under non-denaturing conditions. However, soluble expression does not guarantee correct folding or biological activity. The identity of the band and the function of the purified protein should still be confirmed.</p>
+<h3>2. Insoluble Expression</h3>
+<p><img src="../../blog/images/iptg-induced/2.png" alt="2"></p>
+<p>The target band is observed mainly in P. This may indicate inclusion body formation, although other factors, such as incomplete cell lysis, should also be checked.</p>
+<p>Proteins in inclusion bodies can be recovered through solubilization and refolding, but the extent to which their native structure and activity can be restored varies from protein to protein. Consider optimizing soluble expression first, or choose a refolding process depending on the intended application.</p>
+<p>Although there is a perception that refolding cannot restore a protein to its native structure, commercially available examples demonstrate that it can be successful. Insulin glargine (Abasaglar / Basaglar), used to treat diabetes, and filgrastim (G-CSF; Zarzio / Zarxio), used to prevent and treat neutropenia, are examples of therapeutic proteins produced through insoluble expression in E. coli followed by solubilization and refolding.</p>
+<h3>3. Mixed Soluble and Insoluble Expression</h3>
+<p><img src="../../blog/images/iptg-induced/3.png" alt="3"></p>
+<p>The target band is observed in both S and P. Even when some of the protein is insoluble, purification can proceed if a sufficient amount is available in S. In this pattern, the protein recovered from the soluble fraction may be somewhat less stable than a protein expressed entirely in soluble form.</p>
+<h2>[3] Other Expression Patterns and Their Interpretation</h2>
+<h3>1. Basal Expression / Leaky Expression</h3>
+<p><img src="../../blog/images/iptg-induced/4.png" alt="4"></p>
+<p>The target protein is expressed even without IPTG. This can occur when repression of an inducible expression system is incomplete.</p>
+<p>Basal expression does not necessarily indicate failure. However, if the target protein imposes a burden on the host or is toxic to it, cell growth and subsequent expression may be affected. Not all heterologous proteins are toxic to the host.</p>
+<p><strong>Practical tip:</strong> Compare cell growth as well as band patterns between IPTG(−) and IPTG(+) samples. Also confirm that the band in the uninduced sample is actually the target protein.</p>
+<p><strong>See also:</strong> Major Challenges in Protein Expression</p>
+<h3>2. Detectable Only by Western Blotting, with No Clear Band on SDS-PAGE</h3>
+<p><img src="../../blog/images/iptg-induced/5.png" alt="5"></p>
+<p>The target protein may be expressed at a low level, or its band may be obscured by host proteins of similar molecular weight. It is therefore more appropriate to describe this as “low expression” or “not clearly distinguishable on SDS-PAGE” rather than “no expression.”</p>
+<p>Whether the protein is suitable for the intended application should be determined by the yield and purity obtained after purification, rather than by Western blot signal intensity alone.</p>
+<h3>3. Multiple Bands Below the Expected Molecular Weight on a Western Blot</h3>
+<p>This pattern may suggest proteolysis or protein degradation. However, other possible causes include truncated translation products, sequence errors, and nonspecific antibody binding.</p>
+<p><strong>Practical tip:</strong> Verify the sequence of the expression construct and its open reading frame (ORF), and compare samples collected at different culture time points with samples taken immediately after cell lysis. Even when using a target-specific antibody, lower-molecular-weight bands alone are not sufficient to confirm degradation.</p>
+<h3>4. Bands at Approximately Two or Three Times the Expected Molecular Weight</h3>
+<p>This pattern may suggest oligomers, such as dimers or trimers, or incomplete denaturation.</p>
+<p><strong>Practical tip:</strong> Compare reducing conditions using DTT or β-mercaptoethanol with non-reducing conditions, and evaluate heating conditions separately. For some proteins, excessive heating can promote aggregation. Also, an unheated sample containing SDS is not in its native state.</p>
+<h3>5. Irregular Bands Both Above and Below the Expected Molecular Weight on a Western Blot</h3>
+<p>Protein degradation, oligomerization, aggregation, incomplete denaturation, and nonspecific antibody binding may occur together. This pattern alone is insufficient to conclude that the protein is difficult to express or that abnormal translation has occurred.</p>
+<p><strong>Practical tip:</strong> Compare uninduced and IPTG-induced samples, and compare Western blot detection patterns using antibodies against the target protein and its tag.</p>
+<h2>[4] When Changes to Expression Conditions Do Not Help</h2>
+<p>If adjusting culture temperature, IPTG concentration, induction timing, and induction duration produces little improvement, consider reviewing the expression design. This includes the expression vector, host strain, fusion tag, codon usage, and N-terminal sequence. Even small sequence changes can substantially alter expression patterns.</p>
+<p>When evaluating protein expression, consider changes before and after induction, the distribution between S and P, and agreement with the expected molecular weight, rather than focusing on a single band. No single solution works for every protein, so record the observed patterns and narrow down the possible causes one at a time.</p>
+
+    </div>
+  </section>
+  <div class="container">
+    <div class="ad-slot">Ad placement</div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>BioOnSun</h4>
+        <p class="small">A free collection of online bioinformatics tools. All calculations run in your browser only — sequence data is never sent to or stored on our servers.</p>
+      </div>
+      <div>
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="../reverse-complement.html">Reverse Complement</a></li>
+          <li><a href="../gc-content.html">GC Content Calculator</a></li>
+          <li><a href="../translate.html">DNA→Protein Translator</a></li>
+          <li><a href="../fasta-cleanup.html">FASTA Cleanup Tool</a></li>
+          <li><a href="../sequence-align.html">Sequence Alignment</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Info</h4>
+        <ul>
+          <li><a href="index.html">Blog</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 BioOnSun (juonsun.com/bioonsun). All rights reserved.</span>
+      <span class="updated-note">Last updated: 2026-09-14</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

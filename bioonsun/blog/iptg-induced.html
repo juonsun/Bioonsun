@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4140362030045841" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<title>E. coli IPTG 단백질 발현: 발현 패턴 해석과 실무 팁 | BioOnSun Blog</title>
+<meta name="description" content="단백질은 서열과 구조, 안정성이 서로 달라 같은 조건에서도 발현 양상이 다릅니다. 이번 글에서는 SDS-PAGE와 Western blot에서 관찰되는 대표적인 발현 패턴과 확인할 사항을 정리합니다.">
+<link rel="canonical" href="https://juonsun.com/bioonsun/blog/iptg-induced.html">
+<link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/iptg-induced.html">
+<link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/iptg-induced.html">
+<link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/iptg-induced.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "E. coli IPTG 단백질 발현: 발현 패턴 해석과 실무 팁",
+  "description": "단백질은 서열과 구조, 안정성이 서로 달라 같은 조건에서도 발현 양상이 다릅니다. 이번 글에서는 SDS-PAGE와 Western blot에서 관찰되는 대표적인 발현 패턴과 확인할 사항을 정리합니다.",
+  "datePublished": "2026-09-14",
+  "dateModified": "2026-09-14",
+  "author": {
+    "@type": "Organization",
+    "name": "BioOnSun"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "BioOnSun"
+  }
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="brand"><span class="brand-logo">B</span>Bio<span class="brand-dot">On</span>Sun</a>
+    <nav class="main-nav" id="mainNav">
+      <a href="../index.html">홈</a>
+      <a href="../about.html">소개</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">분석도구 <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="../reverse-complement.html">Reverse Complement</a>
+          <a href="../gc-content.html">GC 함량 계산기</a>
+          <a href="../translate.html">DNA→단백질 번역기</a>
+          <a href="../fasta-cleanup.html">FASTA 정리 도구</a>
+          <a href="../sequence-align.html">서열 정렬 비교</a>
+        </div>
+      </div>
+      <a href="index.html" class="active">프로토콜</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">고객지원 <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="../contact.html">문의하기</a>
+          <a href="../privacy.html">개인정보 처리방침</a>
+        </div>
+      </div>
+      <div class="lang-switch">
+        <a href="iptg-induced.html" class="active">KO</a>
+        <a href="../en/blog/iptg-induced.html">EN</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  </div>
+</header>
+<main>
+  <section class="hero" style="padding-bottom: 10px;">
+    <div class="container">
+      <p class="blog-filter-note" style="margin-bottom:14px;"><a href="index.html">&larr; 블로그 목록으로</a></p>
+      <div class="post-header">
+        <h1>E. coli IPTG 단백질 발현: 발현 패턴 해석과 실무 팁</h1>
+        <div class="post-meta-row">
+          <span class="post-date">2026년 9월 14일</span>
+        </div>
+        <div class="tag-chip-list"><a class="tag-chip" href="tag/대장균-단백질-발현.html">#대장균 단백질 발현</a><a class="tag-chip" href="tag/e-coli-protein-expression.html">#E. coli protein expression</a><a class="tag-chip" href="tag/iptg-induction.html">#IPTG induction</a><a class="tag-chip" href="tag/재조합-단백질-발현.html">#재조합 단백질 발현</a><a class="tag-chip" href="tag/soluble-expression.html">#soluble expression</a><a class="tag-chip" href="tag/insoluble-expression.html">#insoluble expression</a><a class="tag-chip" href="tag/inclusion-body.html">#inclusion body</a><a class="tag-chip" href="tag/protein-refolding.html">#protein refolding</a><a class="tag-chip" href="tag/basal-expression.html">#basal expression</a><a class="tag-chip" href="tag/leaky-expression.html">#leaky expression</a><a class="tag-chip" href="tag/low-protein-expression.html">#low protein expression</a><a class="tag-chip" href="tag/sds-page.html">#SDS-PAGE</a><a class="tag-chip" href="tag/western-blot-multiple-bands.html">#Western blot multiple bands</a><a class="tag-chip" href="tag/protein-degradation.html">#protein degradation</a><a class="tag-chip" href="tag/protein-aggregation.html">#protein aggregation</a><a class="tag-chip" href="tag/reducing-vs-non-reducing-sds-page.html">#reducing vs non-reducing SDS-PAGE</a><a class="tag-chip" href="tag/단백질-발현-최적화.html">#단백질 발현 최적화</a><a class="tag-chip" href="tag/sds-page.html">#SDS-PAGE</a></div>
+      </div>
+    </div>
+  </section>
+  <section style="border-top: none;">
+    <div class="container post-body">
+<p>단백질은 서열과 구조, 안정성이 서로 달라 같은 조건에서도 발현 양상이 다릅니다. 이번 글에서는 SDS-PAGE와 Western blot에서 관찰되는 대표적인 발현 패턴과 확인할 사항을 정리합니다.</p>
+<p>[1] 단백질 발현 확인 실험의 목적</p>
+<p>본격적인 정제에 앞서, 선택한 숙주 균주(host strain)에서 타깃 단백질이 충분히 발현되는지 확인합니다. 핵심은 발현량(expression level)과 가용성(solubility)입니다.</p>
+<p>분석에 사용하는 시료는 다음과 같습니다.</p>
+<p>IPTG(−): IPTG 비유도 대조군
+T, Total: 세포 파쇄액 전체
+S, Soluble: 원심분리 후 상등액의 가용성 분획
+P, Pellet: 원심분리 후 침전물의 불용성 분획</p>
+<p>[2] 기본적인 발현 패턴</p>
+<ol>
+<li>가용성 발현(Soluble expression)</li>
+</ol>
+<p><img src="images/iptg-induced/1.png" alt="1"></p>
+<p>IPTG 유도 후 예상 분자량의 밴드가 증가하고, T와 S에서 뚜렷하게 관찰되는 양상입니다. P에서 적거나 거의 보이지 않는다면 가용성 발현 비율이 높은 것으로 해석할 수 있습니다.</p>
+<p>일반적으로 비변성 조건에서 정제를 진행하기 좋습니다. 다만 가용성으로 발현되었다고 해서 정상적인 접힘이나 활성이 보장되는 것은 아닙니다. 밴드의 정체와 정제 후 기능을 확인해야 합니다.</p>
+<ol start="2">
+<li>불용성 발현(Insoluble expression)</li>
+</ol>
+<p><img src="images/iptg-induced/2.png" alt="2"></p>
+<p>타깃 밴드가 주로 P에서 관찰되는 양상입니다. 봉입체(inclusion body) 형성을 의심할 수 있지만, 불완전한 세포 파쇄 등도 확인해야 합니다.</p>
+<p>봉입체는 가용화(solubilization)와 재접힘(refolding)을 통해 회수할 수 있으나, 정상 구조와 활성의 회복 여부는 단백질마다 다릅니다. 우선 가용성 발현 조건을 검토하거나, 목적에 따라 재접힘 공정을 선택합니다. </p>
+<p>refolding이 되더라도 단백질 본래의 구조로 돌아가지 않는다는 시각도있지만, 실제로 당뇨병 치료제로 사용되는 인슐린 글라진 (Insulin glargine, Abasaglar / Basaglar)과 호중구감소증 예방·치료에 사용되는 필그라스팀 (Filgrastim, G-CSF, Zarzio / Zarxio)의 경우 대장균에서 불용성 발현을 solubilization과 refolding을 통해 실제 상용화한 사례도 있습니다.</p>
+<ol start="3">
+<li>가용성·불용성 혼합 발현</li>
+</ol>
+<p><img src="images/iptg-induced/3.png" alt="3"></p>
+<p>S와 P 모두에서 타깃 밴드가 관찰되는 양상입니다. 불용성 분획이 있더라도, S에서 필요한 양을 확보할 수 있다면 정제를 진행할 수 있습니다. 가용화 단백질만 발현한 단백질에 비해 가용화 단백질이 상대적으로 약간의 불안정한 특성을 가질 수있습니다. </p>
+<p>[3] 그 외의 발현 패턴과 해석</p>
+<ol>
+<li>기저 발현 또는 누출 발현(Basal expression / Leaky expression)</li>
+</ol>
+<p><img src="images/iptg-induced/4.png" alt="4"></p>
+<p>IPTG를 넣지 않은 상태에서도 타깃 단백질이 발현되는 현상입니다. 유도 발현 시스템(inducible expression system)의 억제가 완전하지 않을 때 나타날 수 있습니다.</p>
+<p>기저 발현 자체가 실패를 의미하지는 않습니다. 다만 타깃 단백질이 숙주에 부담이나 독성을 주면 세포 성장과 이후 발현에 영향을 줄 수 있습니다. 외래 단백질이라고 해서 모두 독성을 갖는 것은 아닙니다.</p>
+<p>실무 팁: IPTG(−)와 IPTG(+)의 밴드뿐 아니라 균체 성장도 함께 비교합니다. 비유도 시료의 밴드가 실제 타깃인지 확인하는 것도 필요합니다. 참고: 단백질 발현의 주요 장애 요인</p>
+<ol start="2">
+<li>SDS-PAGE에서는 불분명하고 Western blot에서만 검출되는 경우</li>
+</ol>
+<p><img src="images/iptg-induced/5.png" alt="5"></p>
+<p>타깃 단백질의 발현량이 낮거나, 비슷한 크기의 숙주 단백질 밴드에 가려졌을 가능성이 있습니다. 따라서 ‘발현되지 않음’보다는 저발현(low expression) 또는 ‘SDS-PAGE에서 명확히 구분되지 않음’으로 표현하는 것이 적절합니다.</p>
+<p>사용 가능 여부는 Western blot 신호의 세기만으로 판단하기보다, 정제 후 확보되는 양과 순도를 기준으로 결정합니다.</p>
+<ol start="3">
+<li>Western blot 확인 시 예상 분자량보다 아래에 여러 밴드가 나타나는 경우</li>
+</ol>
+<p>단백질 분해(proteolysis / degradation)를 의심할 수 있습니다. 다만 불완전한 번역 산물(truncated protein), 서열 오류, 항체의 비특이적 결합도 가능한 원인입니다.</p>
+<p>실무 팁: 발현 서열과 ORF를 확인하고, 배양 시간별 시료와 파쇄 직후 시료를 비교합니다. 타깃 특이적 항체를 사용했더라도 하위 밴드만으로 분해를 확정할 수는 없습니다.</p>
+<ol start="4">
+<li>예상 분자량의 약 2배·3배 위치에 밴드가 나타나는 경우</li>
+</ol>
+<p>이량체(dimer), 삼량체(trimer) 등의 올리고머(oligomer)나 불완전한 변성을 의심할 수 있습니다.</p>
+<p>실무 팁: DTT 또는 β-mercaptoethanol을 이용한 환원 조건과 비환원 조건을 비교하고, 가열 조건은 별도로 비교합니다. 강한 가열이 오히려 응집을 유발하는 단백질도 있습니다. 또한 SDS가 포함된 비가열 시료도 천연 상태(native state)는 아닙니다. </p>
+<ol start="5">
+<li>Western blot 확인 시 예상 분자량 위아래로 불규칙한 밴드가 나타나는 경우</li>
+</ol>
+<p>단백질 분해, 올리고머(oligomer), 응집(aggregation), 불완전한 변성, 비특이적 항체 반응 등이 함께 나타날 수 있습니다. 이 패턴만으로 난발현이나 비정상적인 번역을 단정하기는 어렵습니다.</p>
+<p>실무 팁: IPTG 비유도 대조군과 IPTG 유도군을 비교하고, Western blot을 통해 타깃 단백질의 항체나 단백질 태그의 항체의 검출 양상을 비교합니다. </p>
+<p>[4] 발현 조건을 바꿔도 개선되지 않는다면</p>
+<p>배양 온도, IPTG 농도, 유도 시점과 유도 시간을 조절해도 개선이 적다면 발현 벡터(expression vector), 숙주 균주, 융합 태그(fusion tag), 코돈 사용과 N말단 서열 등 발현 설계를 검토할 수 있습니다. 작은 서열 변화도 발현 패턴에 큰 변화를 줄 수 있습니다.</p>
+<p>단백질 발현에서는 밴드 하나보다 유도 전후 변화, S/P 분포, 예상 분자량과의 일치 여부를 함께 보는 것이 중요합니다. 모든 단백질에 같은 해답이 적용되지는 않으므로, 관찰한 패턴을 기록하고 가능한 원인을 하나씩 좁혀가면 좋겠습니다.</p>
+
+    </div>
+  </section>
+  <div class="container">
+    <div class="ad-slot">광고 영역</div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>BioOnSun</h4>
+        <p class="small">무료 온라인 생물정보학 도구 모음입니다. 모든 계산은 여러분의 브라우저 안에서만 이루어지며, 입력한 서열 데이터는 서버로 전송되거나 저장되지 않습니다.</p>
+      </div>
+      <div>
+        <h4>도구</h4>
+        <ul>
+          <li><a href="../reverse-complement.html">Reverse Complement</a></li>
+          <li><a href="../gc-content.html">GC 함량 계산기</a></li>
+          <li><a href="../translate.html">DNA→단백질 번역기</a></li>
+          <li><a href="../fasta-cleanup.html">FASTA 정리 도구</a></li>
+          <li><a href="../sequence-align.html">서열 정렬 비교</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>정보</h4>
+        <ul>
+          <li><a href="index.html">블로그</a></li>
+          <li><a href="../about.html">소개</a></li>
+          <li><a href="../privacy.html">개인정보 처리방침</a></li>
+          <li><a href="../contact.html">문의하기</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 BioOnSun (juonsun.com/bioonsun). All rights reserved.</span>
+      <span class="updated-note">최종 업데이트: 2026년 9월</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
