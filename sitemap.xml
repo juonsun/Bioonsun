@@ -2,448 +2,380 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- Portal root (juonsun.com) — 안내/문의/개인정보처리방침만 남아있음. "/"는 /bioonsun/으로 리다이렉트되므로 목록에서 제외 -->
+  <!-- BioOnSun (/bioonsun/) -->
   <url>
-    <loc>https://juonsun.com/about.html</loc>
+    <loc>https://www.juonsun.com/bioonsun/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/"/>
   </url>
   <url>
-    <loc>https://juonsun.com/privacy.html</loc>
+    <loc>https://www.juonsun.com/bioonsun/reverse-complement.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/reverse-complement.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/reverse-complement.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/reverse-complement.html"/>
   </url>
   <url>
-    <loc>https://juonsun.com/contact.html</loc>
-  </url>
-
-  <!-- BioOnSun (/bioonsun/) — 실제 juonsun.com 루트가 리다이렉트되는 곳, 전체 도구 페이지 -->
-  <url>
-    <loc>https://juonsun.com/bioonsun/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/"/>
+    <loc>https://www.juonsun.com/bioonsun/translate.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/translate.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/translate.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/translate.html"/>
   </url>
   <url>
-    <loc>https://juonsun.com/bioonsun/reverse-complement.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/reverse-complement.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/reverse-complement.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/reverse-complement.html"/>
+    <loc>https://www.juonsun.com/bioonsun/gc-content.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/gc-content.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/gc-content.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/gc-content.html"/>
   </url>
   <url>
-    <loc>https://juonsun.com/bioonsun/translate.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/translate.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/translate.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/translate.html"/>
+    <loc>https://www.juonsun.com/bioonsun/fasta-cleanup.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/fasta-cleanup.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/fasta-cleanup.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/fasta-cleanup.html"/>
   </url>
   <url>
-    <loc>https://juonsun.com/bioonsun/gc-content.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/gc-content.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/gc-content.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/gc-content.html"/>
+    <loc>https://www.juonsun.com/bioonsun/sequence-align.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/sequence-align.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/sequence-align.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/sequence-align.html"/>
   </url>
   <url>
-    <loc>https://juonsun.com/bioonsun/fasta-cleanup.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/fasta-cleanup.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/fasta-cleanup.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/fasta-cleanup.html"/>
+    <loc>https://www.juonsun.com/bioonsun/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/about.html"/>
   </url>
   <url>
-    <loc>https://juonsun.com/bioonsun/sequence-align.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/sequence-align.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/sequence-align.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/sequence-align.html"/>
+    <loc>https://www.juonsun.com/bioonsun/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/privacy.html"/>
   </url>
   <url>
-    <loc>https://juonsun.com/bioonsun/about.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/about.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/about.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/about.html"/>
-  </url>
-  <url>
-    <loc>https://juonsun.com/bioonsun/privacy.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/privacy.html"/>
-  </url>
-  <url>
-    <loc>https://juonsun.com/bioonsun/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/contact.html"/>
+    <loc>https://www.juonsun.com/bioonsun/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/contact.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/"/>
+    <loc>https://www.juonsun.com/bioonsun/en/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/"/>
   </url>
   <url>
-    <loc>https://juonsun.com/bioonsun/en/reverse-complement.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/reverse-complement.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/reverse-complement.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/reverse-complement.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/reverse-complement.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/reverse-complement.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/reverse-complement.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/reverse-complement.html"/>
   </url>
   <url>
-    <loc>https://juonsun.com/bioonsun/en/translate.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/translate.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/translate.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/translate.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/translate.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/translate.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/translate.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/translate.html"/>
   </url>
   <url>
-    <loc>https://juonsun.com/bioonsun/en/gc-content.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/gc-content.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/gc-content.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/gc-content.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/gc-content.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/gc-content.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/gc-content.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/gc-content.html"/>
   </url>
   <url>
-    <loc>https://juonsun.com/bioonsun/en/fasta-cleanup.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/fasta-cleanup.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/fasta-cleanup.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/fasta-cleanup.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/fasta-cleanup.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/fasta-cleanup.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/fasta-cleanup.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/fasta-cleanup.html"/>
   </url>
   <url>
-    <loc>https://juonsun.com/bioonsun/en/sequence-align.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/sequence-align.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/sequence-align.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/sequence-align.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/sequence-align.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/sequence-align.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/sequence-align.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/sequence-align.html"/>
   </url>
   <url>
-    <loc>https://juonsun.com/bioonsun/en/about.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/about.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/about.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/about.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/about.html"/>
   </url>
   <url>
-    <loc>https://juonsun.com/bioonsun/en/privacy.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/privacy.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/privacy.html"/>
   </url>
   <url>
-    <loc>https://juonsun.com/bioonsun/en/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/contact.html"/>
-  </url>
-
-  <url>
-    <loc>https://juonsun.com/bioonsun/blog/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/"/>
+    <loc>https://www.juonsun.com/bioonsun/en/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/contact.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/2026-08-17-test-page.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/2026-08-17-test-page.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/2026-08-17-test-page.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/2026-08-17-test-page.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/"/>
+  </url>
+<url>
+    <loc>https://www.juonsun.com/bioonsun/blog/iptg-induced.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/iptg-induced.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/iptg-induced.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/iptg-induced.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/2026-08-17-test-page.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/2026-08-17-test-page.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/2026-08-17-test-page.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/2026-08-17-test-page.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/iptg-induced.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/iptg-induced.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/iptg-induced.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/iptg-induced.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/1.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/1.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/1.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/1.html"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/단백질-발현-최적화.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/단백질-발현-최적화.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/단백질-발현-최적화.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/단백질-발현-최적화.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/1.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/1.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/1.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/1.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/단백질-발현-최적화.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/단백질-발현-최적화.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/단백질-발현-최적화.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/단백질-발현-최적화.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/2.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/2.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/2.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/2.html"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/대장균-단백질-발현.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/대장균-단백질-발현.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/대장균-단백질-발현.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/대장균-단백질-발현.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/2.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/2.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/2.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/2.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/대장균-단백질-발현.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/대장균-단백질-발현.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/대장균-단백질-발현.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/대장균-단백질-발현.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/test.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/test.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/test.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/test.html"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/재조합-단백질-발현.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/재조합-단백질-발현.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/재조합-단백질-발현.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/재조합-단백질-발현.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/test.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/test.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/test.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/test.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/재조합-단백질-발현.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/재조합-단백질-발현.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/재조합-단백질-발현.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/재조합-단백질-발현.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/iptg-induced.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/iptg-induced.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/iptg-induced.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/iptg-induced.html"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/basal-expression.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/basal-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/basal-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/basal-expression.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/iptg-induced.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/iptg-induced.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/iptg-induced.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/iptg-induced.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/basal-expression.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/basal-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/basal-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/basal-expression.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/단백질-발현-최적화.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/단백질-발현-최적화.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/단백질-발현-최적화.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/단백질-발현-최적화.html"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/e-coli-protein-expression.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/e-coli-protein-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/e-coli-protein-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/e-coli-protein-expression.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/단백질-발현-최적화.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/단백질-발현-최적화.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/단백질-발현-최적화.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/단백질-발현-최적화.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/e-coli-protein-expression.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/e-coli-protein-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/e-coli-protein-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/e-coli-protein-expression.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/대장균-단백질-발현.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/대장균-단백질-발현.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/대장균-단백질-발현.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/대장균-단백질-발현.html"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/inclusion-body.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/inclusion-body.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/inclusion-body.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/inclusion-body.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/대장균-단백질-발현.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/대장균-단백질-발현.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/대장균-단백질-발현.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/대장균-단백질-발현.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/inclusion-body.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/inclusion-body.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/inclusion-body.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/inclusion-body.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/재조합-단백질-발현.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/재조합-단백질-발현.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/재조합-단백질-발현.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/재조합-단백질-발현.html"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/insoluble-expression.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/insoluble-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/insoluble-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/insoluble-expression.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/재조합-단백질-발현.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/재조합-단백질-발현.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/재조합-단백질-발현.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/재조합-단백질-발현.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/insoluble-expression.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/insoluble-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/insoluble-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/insoluble-expression.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/basal-expression.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/basal-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/basal-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/basal-expression.html"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/iptg-induction.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/iptg-induction.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/iptg-induction.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/iptg-induction.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/basal-expression.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/basal-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/basal-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/basal-expression.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/iptg-induction.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/iptg-induction.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/iptg-induction.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/iptg-induction.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/e-coli-protein-expression.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/e-coli-protein-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/e-coli-protein-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/e-coli-protein-expression.html"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/leaky-expression.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/leaky-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/leaky-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/leaky-expression.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/e-coli-protein-expression.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/e-coli-protein-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/e-coli-protein-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/e-coli-protein-expression.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/leaky-expression.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/leaky-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/leaky-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/leaky-expression.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/inclusion-body.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/inclusion-body.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/inclusion-body.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/inclusion-body.html"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/low-protein-expression.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/low-protein-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/low-protein-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/low-protein-expression.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/inclusion-body.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/inclusion-body.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/inclusion-body.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/inclusion-body.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/low-protein-expression.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/low-protein-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/low-protein-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/low-protein-expression.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/insoluble-expression.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/insoluble-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/insoluble-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/insoluble-expression.html"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/protein-aggregation.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/protein-aggregation.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/protein-aggregation.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/protein-aggregation.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/insoluble-expression.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/insoluble-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/insoluble-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/insoluble-expression.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/protein-aggregation.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/protein-aggregation.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/protein-aggregation.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/protein-aggregation.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/iptg-induction.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/iptg-induction.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/iptg-induction.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/iptg-induction.html"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/protein-degradation.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/protein-degradation.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/protein-degradation.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/protein-degradation.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/iptg-induction.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/iptg-induction.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/iptg-induction.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/iptg-induction.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/protein-degradation.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/protein-degradation.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/protein-degradation.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/protein-degradation.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/leaky-expression.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/leaky-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/leaky-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/leaky-expression.html"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/protein-refolding.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/protein-refolding.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/protein-refolding.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/protein-refolding.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/leaky-expression.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/leaky-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/leaky-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/leaky-expression.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/protein-refolding.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/protein-refolding.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/protein-refolding.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/protein-refolding.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/low-protein-expression.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/low-protein-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/low-protein-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/low-protein-expression.html"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/reducing-vs-non-reducing-sds-page.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/reducing-vs-non-reducing-sds-page.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/reducing-vs-non-reducing-sds-page.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/reducing-vs-non-reducing-sds-page.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/low-protein-expression.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/low-protein-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/low-protein-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/low-protein-expression.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/reducing-vs-non-reducing-sds-page.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/reducing-vs-non-reducing-sds-page.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/reducing-vs-non-reducing-sds-page.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/reducing-vs-non-reducing-sds-page.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/protein-aggregation.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/protein-aggregation.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/protein-aggregation.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/protein-aggregation.html"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/sds-page.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/sds-page.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/sds-page.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/sds-page.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/protein-aggregation.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/protein-aggregation.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/protein-aggregation.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/protein-aggregation.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/sds-page.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/sds-page.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/sds-page.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/sds-page.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/protein-degradation.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/protein-degradation.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/protein-degradation.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/protein-degradation.html"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/soluble-expression.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/soluble-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/soluble-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/soluble-expression.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/protein-degradation.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/protein-degradation.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/protein-degradation.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/protein-degradation.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/soluble-expression.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/soluble-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/soluble-expression.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/soluble-expression.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/protein-refolding.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/protein-refolding.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/protein-refolding.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/protein-refolding.html"/>
+    <loc>https://www.juonsun.com/bioonsun/blog/tag/western-blot-multiple-bands.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/western-blot-multiple-bands.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/western-blot-multiple-bands.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/western-blot-multiple-bands.html"/>
   </url>
 
   <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/protein-refolding.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/protein-refolding.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/protein-refolding.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/protein-refolding.html"/>
-  </url>
-
-  <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/reducing-vs-non-reducing-sds-page.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/reducing-vs-non-reducing-sds-page.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/reducing-vs-non-reducing-sds-page.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/reducing-vs-non-reducing-sds-page.html"/>
-  </url>
-
-  <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/reducing-vs-non-reducing-sds-page.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/reducing-vs-non-reducing-sds-page.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/reducing-vs-non-reducing-sds-page.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/reducing-vs-non-reducing-sds-page.html"/>
-  </url>
-
-  <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/sds-page.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/sds-page.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/sds-page.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/sds-page.html"/>
-  </url>
-
-  <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/sds-page.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/sds-page.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/sds-page.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/sds-page.html"/>
-  </url>
-
-  <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/soluble-expression.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/soluble-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/soluble-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/soluble-expression.html"/>
-  </url>
-
-  <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/soluble-expression.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/soluble-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/soluble-expression.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/soluble-expression.html"/>
-  </url>
-
-  <url>
-    <loc>https://juonsun.com/bioonsun/blog/tag/western-blot-multiple-bands.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/western-blot-multiple-bands.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/western-blot-multiple-bands.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/western-blot-multiple-bands.html"/>
-  </url>
-
-  <url>
-    <loc>https://juonsun.com/bioonsun/en/blog/tag/western-blot-multiple-bands.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/tag/western-blot-multiple-bands.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/tag/western-blot-multiple-bands.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/tag/western-blot-multiple-bands.html"/>
+    <loc>https://www.juonsun.com/bioonsun/en/blog/tag/western-blot-multiple-bands.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.juonsun.com/bioonsun/blog/tag/western-blot-multiple-bands.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.juonsun.com/bioonsun/en/blog/tag/western-blot-multiple-bands.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.juonsun.com/bioonsun/en/blog/tag/western-blot-multiple-bands.html"/>
   </url>
 
 </urlset>
