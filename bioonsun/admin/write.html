@@ -50,6 +50,9 @@
       </div>
       <div id="loadStatus" class="admin-status"></div>
       <div id="existingList"></div>
+      <div class="admin-hint">
+        "불러오기"를 누르면 아래 작성 폼에 그 글의 내용이 채워집니다 — 수정 후 zip을 생성하면 같은 글이 갱신됩니다. "삭제"를 누르면 확인 후 삭제용 zip이 생성되며, 안의 README-delete.txt 안내대로 파일 몇 개(글 페이지 등)는 탐색기에서 직접 지워야 완전히 사라집니다(브라우저는 파일을 지울 수 없어서). <strong>이 이미지 업로드 기능을 추가하기 전에 작성한 글은 본문 원본이 저장되어 있지 않아 "불러오기"를 해도 본문은 비어 있습니다</strong> — 그런 글은 사이트에 게시된 내용을 보면서 본문을 다시 입력해야 합니다.
+      </div>
     </div>
 
     <div class="admin-cheatsheet">
@@ -92,6 +95,20 @@
         <div class="admin-field">
           <label>요약 (English) *</label>
           <textarea id="fieldExcerptEn" placeholder="Short summary shown in the list / search results"></textarea>
+        </div>
+        <div class="admin-field">
+          <label>이미지 (선택사항)</label>
+          <div class="btn-row" style="margin:0 0 8px;">
+            <label class="btn" style="margin:0;">
+              이미지 추가
+              <input type="file" id="imageFileInput" accept="image/*" multiple style="display:none;">
+            </label>
+          </div>
+          <div id="imageList" class="admin-image-list"></div>
+          <div class="admin-hint">
+            사진을 추가한 뒤 목록에서 "KO 본문에 삽입" / "EN 본문에 삽입" 버튼을 누르면 커서 위치(또는 맨 끝)에 마크다운 이미지 태그가 자동으로 들어갑니다. 이미지는 zip 생성 시 <code>blog/images/{슬러그}/파일명</code> 경로로 글 페이지와 함께 포함되니, 압축을 풀어 저장소에 덮어쓰고 git push 하면 그대로 게시됩니다.
+            <strong>이미지를 삽입한 뒤에는 슬러그를 바꾸지 마세요</strong> — 경로가 슬러그를 기준으로 만들어져 있어서 이미지가 깨집니다. 이미지 1장당 8MB 이하를 권장합니다.
+          </div>
         </div>
         <div class="admin-field">
           <label>본문 (한국어, 마크다운) *</label>
