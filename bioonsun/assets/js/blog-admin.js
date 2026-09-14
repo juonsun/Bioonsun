@@ -90,10 +90,24 @@
       .filter(Boolean);
   }
 
+  // Windows Explorer's built-in zip extractor fails ("경로가 너무 깁니다" / 0x80010135)
+  // once the full extracted path exceeds ~260 chars. A slug built from a long
+  // English title, repeated inside blog/images/{slug}/{file}, is the single
+  // biggest contributor — so keep auto-generated slugs short.
+  var MAX_SLUG_LENGTH = 60;
+
+  function truncateSlug(slug) {
+    if (slug.length <= MAX_SLUG_LENGTH) return slug;
+    var cut = slug.slice(0, MAX_SLUG_LENGTH);
+    var lastDash = cut.lastIndexOf('-');
+    if (lastDash > MAX_SLUG_LENGTH * 0.5) cut = cut.slice(0, lastDash); // avoid chopping mid-word when a hyphen is nearby
+    return cut.replace(/-+$/, '') || slug.slice(0, MAX_SLUG_LENGTH);
+  }
+
   function slugSuggestion() {
     var enTitle = el('fieldTitleEn').value.trim();
     var koTitle = el('fieldTitleKo').value.trim();
-    return BT.slugify(enTitle || koTitle, 'post');
+    return truncateSlug(BT.slugify(enTitle || koTitle, 'post'));
   }
 
   // ------------------------------------------------------------------
@@ -506,6 +520,7 @@
     if (!titleKo) errors.push('한국어 제목을 입력하세요.');
     if (!titleEn) errors.push('영어 제목을 입력하세요.');
     if (!slug || !/^[a-z0-9\-]+$/i.test(slug)) errors.push('슬러그는 영문/숫자/하이픈(-)만 사용할 수 있습니다.');
+    else if (slug.length > MAX_SLUG_LENGTH) errors.push('슬러그가 너무 깁니다(' + slug.length + '자, 최대 ' + MAX_SLUG_LENGTH + '자). 압축을 풀 때 윈도우 경로 길이 제한에 걸릴 수 있으니 짧게 줄여주세요.');
     if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) errors.push('날짜를 선택하세요.');
     if (!bodyKo) errors.push('한국어 본문을 입력하세요.');
     if (!bodyEn) errors.push('영어 본문을 입력하세요.');
