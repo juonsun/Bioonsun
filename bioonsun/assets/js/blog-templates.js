@@ -203,7 +203,7 @@
       flatLink(homeSeg, 'home', t('홈', 'Home')),
       flatLink(aboutSeg, 'about.html', t('소개', 'About')),
       dropdown(t('분석도구', 'Analysis Tools'), TOOL_LINKS),
-      flatLink(blogSeg, 'blog', t('프로토콜', 'Protocols')),
+      flatLink(blogSeg, 'blog', t('블로그', 'Blog')),
       dropdown(t('고객지원', 'Support'), SUPPORT_LINKS)
     ].join('\n');
 
