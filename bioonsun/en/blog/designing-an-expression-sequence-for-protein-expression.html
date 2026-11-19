@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4140362030045841" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<title>Designing an Expression Sequence for Protein Expression | BioOnSun Blog</title>
+<meta name="description" content="protein expression, recombinant protein expression, expression vector, expression plasmid, plasmid design, pET vector, pET system, T7 promoter, T7 RNA polymerase, BL21(DE3), E. coli expression, ribosome binding site, RBS, Shine-Dalgarno sequence, 16S rRNA, open reading frame, ORF, reading frame, frameshift, start codon, stop codon, premature stop codon, codon, central dogma, transcription, translation, translational enhancing element, TEE, pCold vector, His-tag, 6xHis tag, affinity tag, affinity purification, Ni-NTA, nickel affinity chromatography, anti-His antibody, N-terminal tag, C-terminal tag, fusion protein, protease cleavage site, TEV protease, tag removal, multiple cloning site, MCS, restriction enzyme cloning, subcloning, molecular cloning, antibiotic resistance marker, kanamycin resistance, ampicillin resistance, KanR, AmpR, lacI, lac operator, construct design, amino acid sequence, protein purification, molecular biology, genetic engineering, biotechnology, lab protocol">
+<link rel="canonical" href="https://juonsun.com/bioonsun/en/blog/designing-an-expression-sequence-for-protein-expression.html">
+<link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/designing-an-expression-sequence-for-protein-expression.html">
+<link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/designing-an-expression-sequence-for-protein-expression.html">
+<link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/designing-an-expression-sequence-for-protein-expression.html">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Designing an Expression Sequence for Protein Expression",
+  "description": "protein expression, recombinant protein expression, expression vector, expression plasmid, plasmid design, pET vector, pET system, T7 promoter, T7 RNA polymerase, BL21(DE3), E. coli expression, ribosome binding site, RBS, Shine-Dalgarno sequence, 16S rRNA, open reading frame, ORF, reading frame, frameshift, start codon, stop codon, premature stop codon, codon, central dogma, transcription, translation, translational enhancing element, TEE, pCold vector, His-tag, 6xHis tag, affinity tag, affinity purification, Ni-NTA, nickel affinity chromatography, anti-His antibody, N-terminal tag, C-terminal tag, fusion protein, protease cleavage site, TEV protease, tag removal, multiple cloning site, MCS, restriction enzyme cloning, subcloning, molecular cloning, antibiotic resistance marker, kanamycin resistance, ampicillin resistance, KanR, AmpR, lacI, lac operator, construct design, amino acid sequence, protein purification, molecular biology, genetic engineering, biotechnology, lab protocol",
+  "datePublished": "2026-11-18",
+  "dateModified": "2026-11-18",
+  "author": {
+    "@type": "Organization",
+    "name": "BioOnSun"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "BioOnSun"
+  }
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="brand"><span class="brand-logo">B</span>Bio<span class="brand-dot">On</span>Sun</a>
+    <nav class="main-nav" id="mainNav">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Analysis Tools <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="../reverse-complement.html">Reverse Complement</a>
+          <a href="../gc-content.html">GC Content Calculator</a>
+          <a href="../translate.html">DNA→Protein Translator</a>
+          <a href="../fasta-cleanup.html">FASTA Cleanup Tool</a>
+          <a href="../sequence-align.html">Sequence Alignment</a>
+        </div>
+      </div>
+      <a href="index.html" class="active">Blog</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Support <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="../contact.html">Contact</a>
+          <a href="../privacy.html">Privacy Policy</a>
+        </div>
+      </div>
+      <div class="lang-switch">
+        <a href="../../blog/designing-an-expression-sequence-for-protein-expression.html">KO</a>
+        <a href="designing-an-expression-sequence-for-protein-expression.html" class="active">EN</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<main>
+  <section class="hero" style="padding-bottom: 10px;">
+    <div class="container">
+      <p class="blog-filter-note" style="margin-bottom:14px;"><a href="index.html">&larr; Back to blog</a></p>
+      <div class="post-header">
+        <h1>Designing an Expression Sequence for Protein Expression</h1>
+        <div class="post-meta-row">
+          <span class="post-date">November 18, 2026</span>
+        </div>
+        <div class="tag-chip-list"><a class="tag-chip" href="tag/단백질-발현.html">#단백질 발현</a><a class="tag-chip" href="tag/재조합-단백질-발현.html">#재조합 단백질 발현</a><a class="tag-chip" href="tag/발현-벡터.html">#발현 벡터</a><a class="tag-chip" href="tag/pet-벡터.html">#pET 벡터</a><a class="tag-chip" href="tag/대장균-단백질-발현.html">#대장균 단백질 발현</a><a class="tag-chip" href="tag/클로닝.html">#클로닝</a><a class="tag-chip" href="tag/단백질-정제.html">#단백질 정제</a><a class="tag-chip" href="tag/expression-vector.html">#expression vector</a><a class="tag-chip" href="tag/pet-vector.html">#pET vector</a><a class="tag-chip" href="tag/orf.html">#ORF</a><a class="tag-chip" href="tag/reading-frame.html">#reading frame</a><a class="tag-chip" href="tag/rbs.html">#RBS</a><a class="tag-chip" href="tag/his-tag.html">#His-tag</a><a class="tag-chip" href="tag/t7-promoter.html">#T7 promoter</a><a class="tag-chip" href="tag/e-coli-protein-expression.html">#E. coli protein expression</a></div>
+      </div>
+    </div>
+  </section>
+  <section style="border-top: none;">
+    <div class="container post-body">
+<h1>Designing an Expression Sequence for Protein Expression</h1>
+<p>In gene design for recombinant protein expression, simply inserting the gene of interest into a plasmid is not enough. The <strong>promoter, RBS, start codon, ORF (open reading frame) and stop codon</strong> all have to be placed in the right positions and the right orientation, and when a fusion tag such as a His-tag is used, the <strong>reading frame</strong> has to line up correctly as well.</p>
+<p>This post covers the basic architecture of an <strong>expression plasmid</strong> for recombinant protein expression in <em>E. coli</em>, together with the elements you should check during the actual cloning work.</p>
+<h2>[1] How a protein is made from DNA</h2>
+<p>Genetic information flows in one basic direction:</p>
+<p><strong>DNA → RNA → Protein</strong></p>
+<p>The process by which the genetic information in DNA is passed to RNA is called <strong>transcription</strong>, and the process by which a protein is built from the information in RNA is called <strong>translation</strong>.</p>
+<p>This flow of genetic information is generally referred to as the <strong>central dogma</strong>.</p>
+<p><strong>DNA ─Transcription→ mRNA ─Translation→ Protein</strong></p>
+<p>Designing a plasmid for protein expression ultimately means arranging the necessary genetic elements in the right order so that this process can proceed efficiently.</p>
+<h2>[2] Translation and the ribosome</h2>
+<p>The mRNA produced by transcription is translated by the <strong>ribosome</strong>.</p>
+<p>The ribosome reads the mRNA sequence in units of <strong>codons</strong>, and as the amino acid corresponding to each codon is joined on, a single polypeptide chain is built.</p>
+<p>What matters here is that the ribosome does not begin translation at just any position on the mRNA.</p>
+<p>In <em>E. coli</em>, the <strong>ribosome binding site (RBS)</strong> generally plays a key role in ribosome binding and translation initiation. The best-known example is the <strong>Shine–Dalgarno sequence</strong>, which interacts with the 16S rRNA so that the ribosome is properly positioned around the start codon.</p>
+<p>So when designing a sequence for protein expression, you have to consider not only the sequence of the target gene itself but also the <strong>position of the RBS and start codon, and the sequence surrounding them</strong>.</p>
+<h2>[3] ORF and reading frame</h2>
+<p>One thing you must always check when designing an expression sequence is the <strong>ORF (open reading frame)</strong>.</p>
+<p>An ORF is a nucleotide sequence that can be translated in a single reading frame, from a start codon through to a stop codon.</p>
+<p>This matters especially when you want to express the target gene joined to sequences already present in the vector, such as a <strong>6×His-tag or a protease cleavage site</strong>: the reading frame has to continue across the junctions without interruption.</p>
+<p>For example, if you want to express a protein in the form</p>
+<p><strong>6×His-tag → Cleavage site → Target protein</strong></p>
+<p>then all three regions have to be joined in the same reading frame.</p>
+<p>If 1–2 bp are added or lost during cloning and the frame slips, a <strong>frameshift</strong> occurs: a completely different amino acid sequence is translated, or a premature stop codon appears partway through.</p>
+<p>For that reason, once an expression construct has been designed, it is important to check <strong>not only the final DNA sequence but the translated amino acid sequence as well.</strong></p>
+<h2>[4] A closer look at the expression plasmid</h2>
+<p>Now let&#39;s look at the structure of a plasmid actually used for protein expression.</p>
+<p>For recombinant protein expression in <em>E. coli</em>, <strong>pET-series expression vectors</strong> are widely used.</p>
+<p>The pET system is built on the <strong>T7 RNA polymerase–T7 promoter system</strong> and is designed to drive strong expression of the target gene, which makes it one of the standard systems for recombinant protein expression in <em>E. coli</em>.</p>
+<p>pET-series vectors differ from one another, but they may include elements such as the following:</p>
+<p><strong>f1 ori · antibiotic resistance marker (KanR/AmpR) · ori · bom · rop · lacI · lac promoter/operator · T7 promoter · RBS ·</strong> translational enhancing element (TEE), <strong>affinity tag (e.g. 6×His) · protease cleavage site · MCS (multiple cloning site)</strong></p>
+<p>Each of these serves a different function: plasmid maintenance, selection, transcriptional control, translation, protein purification, and so on.</p>
+<p>In practice, you do not need to scrutinize every one of these elements to the same degree when designing an expression construct.</p>
+<p>The elements to check first, at the cloning and protein expression stages, are these:</p>
+<p><strong>Antibiotic resistance marker · T7 promoter · RBS · 6×His-tag · Protease cleavage site · MCS (multiple cloning site)</strong></p>
+<p>Below we go through what each of them does and what to check for it during plasmid design.</p>
+<h3>① Antibiotic resistance marker (KanR/AmpR)</h3>
+<p>The antibiotic resistance marker is used to select bacteria carrying the plasmid and to keep the plasmid maintained during culture. KanR confers kanamycin resistance and AmpR confers ampicillin resistance.</p>
+<p>That said, a colony growing on antibiotic-containing medium does not mean the target gene was inserted correctly. A vector with no insert can also carry antibiotic resistance, so after cloning you have to verify insertion and sequence separately.</p>
+<h3>② T7 promoter</h3>
+<p>The T7 promoter is the DNA sequence recognized by T7 RNA polymerase, which then begins transcription of the gene located downstream.</p>
+<p>An expression system using the T7 promoter therefore requires not only the plasmid but also an expression host able to supply T7 RNA polymerase. BL21(DE3) is the standard choice.</p>
+<p>During design, check that the target gene is inserted in the same orientation as the direction of transcription from the T7 promoter. Note too that a promoter is a transcriptional control element and should be distinguished from the start codon, which specifies where translation of the protein begins.</p>
+<h3>③ RBS (ribosome binding site)</h3>
+<p>The RBS is the region of the transcribed mRNA where the ribosome binds to initiate translation. The RBS marked on a plasmid map corresponds to the DNA sequence that gives rise to that mRNA region.</p>
+<p>Just as important as the presence of an RBS is the spacing between the RBS and the start codon where translation actually begins, along with the surrounding sequence. So if your cloning alters this region, check whether translation initiation could be affected.</p>
+<p>In a construct with an N-terminal tag, the relevant reference point is not the target gene&#39;s own ATG but the start codon of the entire fusion protein, tag included.</p>
+<h3>④ TEE (translational enhancing element)</h3>
+<p>A TEE is a sequence element used to increase translation efficiency. It is not included in every expression vector, however, and it is hard to regard it as a standard component of the pET series. It is found, for example, in some pCold vectors.</p>
+<p>Where the element corresponds to coding sequence at the translation initiation region, <strong>translation begins at the ATG within the TEE, so that the TEE-derived amino acids together with the downstream tag and target protein are made as a single polypeptide.</strong></p>
+<p><strong>In that case, even if another ATG appears in front of the target gene, it is generally read as a codon specifying methionine within the translation already in progress. The mere presence of an ATG does not necessarily mean an independent round of translation starts at that position.</strong></p>
+<p>So with a TEE-containing vector, check whether that sequence is actually translated, which amino acids it adds to the N-terminus of the final protein, and whether that sequence remains after tag removal.</p>
+<h3>⑤ 6×His-tag</h3>
+<p>The 6×His-tag is a short peptide tag of six consecutive histidines. It is used for metal affinity purification with nickel or cobalt, and can also be used for detection with an anti-His antibody.</p>
+<p>A His-tag can be placed at either the N-terminus or the C-terminus of the target protein. Whichever position you choose, it has to be joined to the target gene in the same reading frame.</p>
+<p>In particular, to use a C-terminal His-tag there must be no stop codon between the target gene and the tag. If translation terminates at the end of the target gene, the downstream His-tag will not be part of the protein.</p>
+<h3>⑥ Protease cleavage site</h3>
+<p>A protease cleavage site is an amino acid sequence recognized and cut by a specific protease. It is placed between the tag and the target protein when you intend to remove the tag after purification.</p>
+<p>For example, you might design the following arrangement:</p>
+<p>6×His-tag → Protease cleavage site → Target protein</p>
+<p>At the design stage, check the recognition sequence of the protease you plan to use and where it actually cuts. Also check whether any extra amino acids will remain on the target protein after cleavage.</p>
+<p>A typical protease cleavage site is not cut automatically just because the sequence is there. The protease that recognizes the site has to act on it, so design with the tag removal step in mind.</p>
+<h3>⑦ MCS (multiple cloning site)</h3>
+<p>The MCS is a region where several restriction enzyme recognition sites are clustered together, used for inserting the target gene into the vector.</p>
+<p>In restriction enzyme cloning, check whether the sites you have chosen also occur inside the target gene. And look not only at the insertion orientation but also at the reading frame across the junction where vector and insert are joined.</p>
+<p>When part of the MCS falls within the translated region, the restriction site sequence or bases added during ligation can remain as extra amino acids in the final protein. So don&#39;t stop at confirming that the DNA was joined — check the full amino acid sequence, junctions included.</p>
+<h2>[5] What matters in the end is the protein that will actually be made</h2>
+<p>Once the expression plasmid design is finished, don&#39;t stop at translating the target gene on its own — check the whole sequence, from the start codon where translation actually begins through to the stop codon.</p>
+<p>A final check is worth running over the following points:</p>
+<ul>
+<li>Is the target gene inserted in the same orientation as the direction of transcription from the promoter?</li>
+<li>Is the spacing between the RBS and the actual start codon still appropriate?</li>
+<li>Are the tag, the cleavage site and the target gene joined in the same reading frame?</li>
+<li>Are there any unintended internal stop codons?</li>
+<li>If a C-terminal tag is used, is there no stop codon in front of it?</li>
+<li>Which extra amino acids remain on the final protein, and on the protein after tag removal?</li>
+</ul>
+<p>For a construct using an N-terminal His-tag, for instance, you can lay the elements out like this:</p>
+<p>DNA layout:</p>
+<p>Promoter → RBS → Start codon → His-tag coding sequence → Cleavage site coding sequence → Target gene → Stop codon</p>
+<p>Translation product:</p>
+<p>The target protein with an N-terminal His-tag and cleavage site attached</p>
+<p>Here the promoter and RBS are regulatory elements for expression; they are not themselves included in the protein&#39;s amino acid sequence.</p>
+<p>In the end, designing an expression sequence means asking not only &quot;did the gene go in correctly?&quot; but also &quot;from where to where is it translated, and what protein does that produce?&quot;</p>
+
+    </div>
+  </section>
+  <div class="container">
+    <div class="ad-slot">Ad placement</div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>BioOnSun</h4>
+        <p class="small">A free collection of online bioinformatics tools. All calculations run in your browser only — sequence data is never sent to or stored on our servers.</p>
+      </div>
+      <div>
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="../reverse-complement.html">Reverse Complement</a></li>
+          <li><a href="../gc-content.html">GC Content Calculator</a></li>
+          <li><a href="../translate.html">DNA→Protein Translator</a></li>
+          <li><a href="../fasta-cleanup.html">FASTA Cleanup Tool</a></li>
+          <li><a href="../sequence-align.html">Sequence Alignment</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Info</h4>
+        <ul>
+          <li><a href="index.html">Blog</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 BioOnSun (juonsun.com/bioonsun). All rights reserved.</span>
+      <span class="updated-note">Last updated: 2026-11-18</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

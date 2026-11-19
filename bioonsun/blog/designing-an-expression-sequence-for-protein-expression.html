@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4140362030045841" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<title>단백질 발현을 위한 발현 시퀀스 디자인 | BioOnSun Blog</title>
+<meta name="description" content="대장균 재조합 단백질 발현을 위한 expression plasmid 설계의 기본 구조를 정리했습니다. T7 promoter, RBS, ORF, His-tag의 reading frame까지 클로닝 단계에서 꼭 확인해야 할 요소를 살펴봅니다.">
+<link rel="canonical" href="https://juonsun.com/bioonsun/blog/designing-an-expression-sequence-for-protein-expression.html">
+<link rel="alternate" hreflang="ko" href="https://juonsun.com/bioonsun/blog/designing-an-expression-sequence-for-protein-expression.html">
+<link rel="alternate" hreflang="en" href="https://juonsun.com/bioonsun/en/blog/designing-an-expression-sequence-for-protein-expression.html">
+<link rel="alternate" hreflang="x-default" href="https://juonsun.com/bioonsun/en/blog/designing-an-expression-sequence-for-protein-expression.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "단백질 발현을 위한 발현 시퀀스 디자인",
+  "description": "대장균 재조합 단백질 발현을 위한 expression plasmid 설계의 기본 구조를 정리했습니다. T7 promoter, RBS, ORF, His-tag의 reading frame까지 클로닝 단계에서 꼭 확인해야 할 요소를 살펴봅니다.",
+  "datePublished": "2026-11-18",
+  "dateModified": "2026-11-18",
+  "author": {
+    "@type": "Organization",
+    "name": "BioOnSun"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "BioOnSun"
+  }
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="brand"><span class="brand-logo">B</span>Bio<span class="brand-dot">On</span>Sun</a>
+    <nav class="main-nav" id="mainNav">
+      <a href="../index.html">홈</a>
+      <a href="../about.html">소개</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">분석도구 <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="../reverse-complement.html">Reverse Complement</a>
+          <a href="../gc-content.html">GC 함량 계산기</a>
+          <a href="../translate.html">DNA→단백질 번역기</a>
+          <a href="../fasta-cleanup.html">FASTA 정리 도구</a>
+          <a href="../sequence-align.html">서열 정렬 비교</a>
+        </div>
+      </div>
+      <a href="index.html" class="active">블로그</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">고객지원 <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="../contact.html">문의하기</a>
+          <a href="../privacy.html">개인정보 처리방침</a>
+        </div>
+      </div>
+      <div class="lang-switch">
+        <a href="designing-an-expression-sequence-for-protein-expression.html" class="active">KO</a>
+        <a href="../en/blog/designing-an-expression-sequence-for-protein-expression.html">EN</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  </div>
+</header>
+<main>
+  <section class="hero" style="padding-bottom: 10px;">
+    <div class="container">
+      <p class="blog-filter-note" style="margin-bottom:14px;"><a href="index.html">&larr; 블로그 목록으로</a></p>
+      <div class="post-header">
+        <h1>단백질 발현을 위한 발현 시퀀스 디자인</h1>
+        <div class="post-meta-row">
+          <span class="post-date">2026년 11월 18일</span>
+        </div>
+        <div class="tag-chip-list"><a class="tag-chip" href="tag/단백질-발현.html">#단백질 발현</a><a class="tag-chip" href="tag/재조합-단백질-발현.html">#재조합 단백질 발현</a><a class="tag-chip" href="tag/발현-벡터.html">#발현 벡터</a><a class="tag-chip" href="tag/pet-벡터.html">#pET 벡터</a><a class="tag-chip" href="tag/대장균-단백질-발현.html">#대장균 단백질 발현</a><a class="tag-chip" href="tag/클로닝.html">#클로닝</a><a class="tag-chip" href="tag/단백질-정제.html">#단백질 정제</a><a class="tag-chip" href="tag/expression-vector.html">#expression vector</a><a class="tag-chip" href="tag/pet-vector.html">#pET vector</a><a class="tag-chip" href="tag/orf.html">#ORF</a><a class="tag-chip" href="tag/reading-frame.html">#reading frame</a><a class="tag-chip" href="tag/rbs.html">#RBS</a><a class="tag-chip" href="tag/his-tag.html">#His-tag</a><a class="tag-chip" href="tag/t7-promoter.html">#T7 promoter</a><a class="tag-chip" href="tag/e-coli-protein-expression.html">#E. coli protein expression</a></div>
+      </div>
+    </div>
+  </section>
+  <section style="border-top: none;">
+    <div class="container post-body">
+<h1><strong>단백질 발현을 위한 발현 시퀀스 디자인</strong></h1>
+<p>재조합 단백질을 발현하기 위한 gene digain에서는 단순히 원하는 유전자를 plasmid에 삽입하는 것만으로는 충분하지 않습니다. <strong>Promoter, RBS, start codon, ORF(Open Reading Frame), stop codon</strong> 등의 위치와 방향이 올바르게 구성되어야 하며, His-tag과 같은 fusion tag을 사용하는 경우에는 <strong>reading frame</strong>도 정확하게 맞아야 합니다.</p>
+<p>이번 글에서는 <em>E. coli</em>에서 재조합 단백질을 발현하기 위한 <strong>expression plasmid design</strong>의 기본 구조와 실제 cloning 과정에서 확인해야 할 요소들을 정리해보겠습니다.</p>
+<p><strong>[1] DNA에서 단백질이 만들어지는 과정</strong></p>
+<p>기본적으로 유전정보는 다음과 같은 방향으로 전달됩니다.</p>
+<p><strong>DNA → RNA → Protein</strong></p>
+<p>DNA의 유전정보가 RNA로 전달되는 과정을 <strong>전사(Transcription)</strong>, RNA의 정보를 바탕으로 단백질이 만들어지는 과정을 **번역(Translation)**이라고 합니다.</p>
+<p>이러한 유전정보의 흐름을 일반적으로 **Central Dogma(중심원리)**라고 합니다.</p>
+<p><strong>DNA ─Transcription→ mRNA ─Translation→ Protein</strong></p>
+<p>단백질 발현용 plasmid를 디자인한다는 것은 결국 이 과정이 효율적으로 일어날 수 있도록 필요한 유전적 요소들을 적절한 순서로 배치하는 과정이라고 볼 수 있습니다.</p>
+<p><strong>[2] Translation과 Ribosome</strong></p>
+<p>전사를 통해 만들어진 mRNA는 **ribosome(리보솜)**에 의해 번역됩니다.</p>
+<p>Ribosome은 mRNA의 염기서열을 <strong>codon</strong> 단위로 읽고, 각각의 codon에 대응하는 아미노산이 연결되면서 하나의 polypeptide chain이 만들어집니다.</p>
+<p>이때 중요한 것은 ribosome이 mRNA의 아무 위치에서나 번역을 시작하는 것이 아니라는 점입니다.</p>
+<p><em>E. coli</em>에서는 일반적으로 **Ribosome Binding Site(RBS)**가 ribosome의 결합과 번역 개시에 중요한 역할을 합니다. 대표적으로 <strong>Shine-Dalgarno sequence</strong>가 있으며, 16S rRNA와 상호작용하여 start codon 주변에 ribosome이 적절하게 위치하도록 합니다.</p>
+<p>따라서 단백질 발현을 위한 sequence를 설계할 때에는 단순히 target gene의 서열뿐만 아니라 <strong>RBS와 start codon의 위치 및 주변 sequence</strong>도 함께 고려해야 합니다.</p>
+<p><strong>[3] ORF와 Reading Frame</strong></p>
+<p>단백질 발현 sequence를 설계할 때 반드시 확인해야 하는 것이 **ORF(Open Reading Frame)**입니다.</p>
+<p>ORF는 start codon에서 시작하여 stop codon까지 하나의 reading frame으로 번역될 수 있는 염기서열을 의미합니다.</p>
+<p>특히 vector에 존재하는 <strong>6×His-tag, protease cleavage site</strong> 등의 서열과 target gene을 연결하여 발현하려는 경우에는 reading frame이 정확하게 이어져야 합니다.</p>
+<p>예를 들어,</p>
+<p><strong>6×His-tag → Cleavage site → Target protein</strong></p>
+<p>형태로 단백질을 발현하고자 한다면 세 영역이 동일한 reading frame으로 연결되어야 합니다.</p>
+<p>Cloning 과정에서 염기가 1~2 bp 추가되거나 제거되어 frame이 어긋나면 <strong>frameshift</strong>가 발생하여 전혀 다른 아미노산 서열이 번역되거나 중간에 premature stop codon이 나타날 수 있습니다.</p>
+<p>따라서 발현 construct를 디자인한 후에는 최종 DNA sequence뿐만 아니라 <strong>translated amino acid sequence까지 확인하는 것이 중요합니다.</strong></p>
+<p><strong>[4] Expression Plasmid를 살펴보자</strong></p>
+<p>이제 실제 단백질 발현에 사용되는 plasmid의 구조를 살펴보겠습니다.</p>
+<p><em>E. coli</em> recombinant protein expression에서는 <strong>pET 계열 expression vector</strong>가 널리 사용됩니다.</p>
+<p>pET system은 <strong>T7 RNA polymerase–T7 promoter system</strong>을 기반으로 target gene을 강하게 발현시킬 수 있도록 설계되어 있어 <em>E. coli</em> recombinant protein expression에서 대표적으로 사용되는 시스템 중 하나입니다.</p>
+<p>pET 계열 vector에는 종류에 따라 차이가 있지만 다음과 같은 요소들이 포함될 수 있습니다.</p>
+<p><strong>f1 ori · antibiotic resistance marker(KanR/AmpR) · ori · bom · rop · lacI · lac promoter/operator · T7 promoter · RBS ·</strong> Translational Enhancing Element (TEE), <strong>affinity tag(예: 6×His) · protease cleavage site · MCS(Multiple Cloning Site)</strong></p>
+<p>각각의 요소는 plasmid 유지, selection, transcription 조절, translation 및 protein purification 등 서로 다른 기능을 담당합니다.</p>
+<p>실제로 단백질 발현 construct를 디자인할 때 이 모든 요소를 동일한 수준으로 확인할 필요는 없습니다.</p>
+<p>특히 cloning과 protein expression 단계에서 우선적으로 확인해야 할 요소는 다음과 같습니다.</p>
+<p><strong>Antibiotic resistance marker · T7 promoter · RBS · 6×His-tag · Protease cleavage site · MCS(Multiple Cloning Site)</strong></p>
+<p>다음에서는 각각의 요소가 어떤 기능을 하며, 실제 plasmid design 과정에서 무엇을 확인해야 하는지 살펴보겠습니다.</p>
+<p>① Antibiotic resistance marker(KanR/AmpR)</p>
+<p>Antibiotic resistance marker는 plasmid를 가진 세균을 선별하고, 배양 중 plasmid가 유지되도록 하는 역할을 합니다. 대표적으로 KanR은 kanamycin 내성을, AmpR은 ampicillin 내성을 부여합니다.</p>
+<p>다만 항생제가 포함된 배지에서 colony가 자랐다고 해서 target gene이 정확하게 삽입되었다는 의미는 아닙니다. Insert가 없는 vector도 항생제 내성을 가질 수 있으므로, cloning 후에는 삽입 여부와 서열을 별도로 확인해야 합니다.</p>
+<p>② T7 promoter</p>
+<p>T7 promoter는 T7 RNA polymerase가 인식하여 downstream에 위치한 유전자의 전사를 시작하도록 하는 DNA 서열입니다.</p>
+<p>따라서 T7 promoter를 사용하는 발현 시스템에서는 plasmid뿐만 아니라 T7 RNA polymerase를 공급할 수 있는 발현 숙주도 필요합니다. 대표적으로 BL21(DE3)가 사용됩니다.</p>
+<p>Design 과정에서는 target gene이 T7 promoter의 전사 방향과 일치하도록 삽입되어 있는지 확인해야 합니다. 또한 promoter는 전사를 조절하는 요소이며, 단백질의 번역 시작 위치를 지정하는 start codon과는 구분해야 합니다.</p>
+<p>③ RBS(Ribosome Binding Site)</p>
+<p>RBS는 전사된 mRNA에서 ribosome이 결합하여 번역을 시작하도록 돕는 영역입니다. Plasmid map에 표시된 RBS는 이러한 mRNA 영역을 만들어내는 DNA 서열에 해당합니다.</p>
+<p>RBS가 존재하는 것만큼 중요한 것은 RBS와 실제 번역이 시작되는 start codon 사이의 간격과 주변 서열입니다. 따라서 cloning 과정에서 이 영역을 변경한다면 번역 개시에 영향을 줄 수 있는지 확인해야 합니다.</p>
+<p>N-terminal tag이 있는 construct에서는 target gene 자체의 ATG가 아니라, tag을 포함한 전체 fusion protein의 start codon을 기준으로 살펴보아야 합니다.</p>
+<p>④ TEE(Translational Enhancing Element)</p>
+<p>TEE는 번역 효율을 높이기 위해 사용하는 서열 요소입니다. 다만 모든 발현 vector에 포함되는 것은 아니며, pET 계열의 공통 구성 요소로 보기는 어렵습니다. 대표적으로 일부 pCold vector에서 확인할 수 있습니다.</p>
+<p>번역 시작 부위의 coding sequence에 해당하는 경우에는, <strong>TEE에 포함된 ATG에서 번역이 시작되어 TEE 유래 아미노산과 downstream의 tag, target protein이 하나의 polypeptide로 만들어집니다.</strong></p>
+<p><strong>이때 target gene 앞에 ATG가 다시 나타나더라도, 이미 진행 중인 번역에서는 일반적으로 methionine을 지정하는 codon으로 읽힙니다. ATG가 있다는 이유만으로 그 위치에서 독립적인 번역이 반드시 시작되는 것은 아닙니다.</strong></p>
+<p>따라서 TEE가 있는 vector에서는 해당 서열이 실제로 번역되는지, 최종 단백질의 N-말단에 어떤 아미노산이 추가되는지, tag 제거 후에도 그 서열이 남는지를 확인해야 합니다.</p>
+<p>⑤ 6×His-tag</p>
+<p>6×His-tag은 histidine 6개가 연속으로 연결된 짧은 peptide tag입니다. Nickel이나 cobalt를 이용하는 금속 친화성 정제에 활용하며, anti-His antibody를 이용한 검출에도 사용할 수 있습니다.</p>
+<p>His-tag은 target protein의 N-말단 또는 C-말단에 배치할 수 있습니다. 어느 위치에 연결하더라도 target gene과 동일한 reading frame으로 이어져야 합니다.</p>
+<p>특히 C-terminal His-tag을 사용하려면 target gene과 His-tag 사이에 stop codon이 없어야 합니다. Target gene 끝에서 번역이 종료되면 downstream의 His-tag은 단백질에 포함되지 않습니다.</p>
+<p>⑥ Protease cleavage site</p>
+<p>Protease cleavage site는 특정 protease가 인식하여 단백질을 절단하는 아미노산 서열입니다. 정제 후 tag을 제거하고자 할 때 tag과 target protein 사이에 배치합니다.</p>
+<p>예를 들어 다음과 같은 구조로 설계할 수 있습니다.</p>
+<p>6×His-tag → Protease cleavage site → Target protein</p>
+<p>Design 단계에서는 사용할 protease의 인식 서열과 실제 절단 위치를 확인해야 합니다. 또한 절단 후 target protein에 추가 아미노산이 남는지도 확인해야 합니다.</p>
+<p>일반적인 protease cleavage site는 서열을 넣었다고 자동으로 절단되는 것이 아닙니다. 해당 부위를 인식하는 protease가 작용해야 하므로, tag 제거 과정까지 고려하여 설계해야 합니다.</p>
+<p>⑦ MCS(Multiple Cloning Site)</p>
+<p>MCS는 여러 제한효소 인식 부위를 모아 놓은 영역으로, target gene을 vector에 삽입할 때 활용합니다.</p>
+<p>제한효소를 이용한 cloning에서는 선택한 인식 부위가 target gene 내부에도 존재하는지 확인해야 합니다. 또한 삽입 방향뿐 아니라 vector와 insert가 연결되는 junction의 reading frame도 함께 살펴보아야 합니다.</p>
+<p>특히 MCS 일부가 번역 영역에 포함되는 경우에는 제한효소 인식 서열이나 연결 과정에서 추가된 염기가 최종 단백질의 추가 아미노산 서열로 남을 수 있습니다. 따라서 DNA가 연결되었는지만 확인하지 말고, 연결 부위를 포함한 전체 amino acid sequence를 확인하는 것이 중요합니다.</p>
+<p>[5] 최종적으로 확인해야 할 것은 ‘실제로 만들어질 단백질’</p>
+<p>Expression plasmid design을 마친 후에는 target gene만 따로 번역해보는 것으로 끝내지 않고, 실제 번역이 시작되는 start codon부터 stop codon까지 전체 서열을 확인해야 합니다.</p>
+<p>최종 점검에서는 다음 사항을 살펴보면 좋습니다.</p>
+<ul>
+<li>Target gene의 삽입 방향이 promoter의 전사 방향과 일치하는가?</li>
+<li>RBS와 실제 start codon의 위치가 적절하게 유지되어 있는가?</li>
+<li>Tag, cleavage site, target gene이 같은 reading frame으로 연결되어 있는가?</li>
+<li>의도하지 않은 중간 stop codon이 존재하지 않는가?</li>
+<li>C-terminal tag을 사용한다면 그 앞에 stop codon이 없는가?</li>
+<li>최종 단백질과 tag 제거 후 단백질에 어떤 추가 아미노산이 남는가?</li>
+</ul>
+<p>예를 들어 N-terminal His-tag을 사용하는 construct라면, 다음과 같이 각 요소를 구분하여 살펴볼 수 있습니다.</p>
+<p>DNA 구성:</p>
+<p>Promoter → RBS → Start codon → His-tag coding sequence → Cleavage site coding sequence → Target gene → Stop codon</p>
+<p>번역 산물:</p>
+<p>N-terminal His-tag과 절단 부위가 연결된 target protein</p>
+<p>여기서 promoter와 RBS는 발현을 위한 조절 요소이며, 단백질의 아미노산 서열로 그대로 포함되는 부분은 아닙니다.</p>
+<p>결국 발현 시퀀스를 디자인할 때는 “유전자가 제대로 들어갔는가?”와 함께 “어디서부터 어디까지 번역되어, 어떤 단백질이 만들어지는가?”를 확인하는 것이 중요합니다.</p>
+
+    </div>
+  </section>
+  <div class="container">
+    <div class="ad-slot">광고 영역</div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>BioOnSun</h4>
+        <p class="small">무료 온라인 생물정보학 도구 모음입니다. 모든 계산은 여러분의 브라우저 안에서만 이루어지며, 입력한 서열 데이터는 서버로 전송되거나 저장되지 않습니다.</p>
+      </div>
+      <div>
+        <h4>도구</h4>
+        <ul>
+          <li><a href="../reverse-complement.html">Reverse Complement</a></li>
+          <li><a href="../gc-content.html">GC 함량 계산기</a></li>
+          <li><a href="../translate.html">DNA→단백질 번역기</a></li>
+          <li><a href="../fasta-cleanup.html">FASTA 정리 도구</a></li>
+          <li><a href="../sequence-align.html">서열 정렬 비교</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>정보</h4>
+        <ul>
+          <li><a href="index.html">블로그</a></li>
+          <li><a href="../about.html">소개</a></li>
+          <li><a href="../privacy.html">개인정보 처리방침</a></li>
+          <li><a href="../contact.html">문의하기</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 BioOnSun (juonsun.com/bioonsun). All rights reserved.</span>
+      <span class="updated-note">최종 업데이트: 2026년 11월</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
