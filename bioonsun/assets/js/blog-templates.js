@@ -360,6 +360,16 @@
       grid = '<div class="blog-grid">\n' + posts.map(function (p) { return blogCardHtml(p, lang, fromDir); }).join('\n') + '\n</div>';
     }
 
+    // The full tag list sits in a collapsed <details>: the links stay in the
+    // markup (crawlable, and still one click away for readers) without the
+    // chip wall pushing the posts below the fold.
+    var tagFilter = tags.length ? [
+      '      <details class="tag-filter">',
+      '        <summary>' + htmlEscape(t('태그로 찾기', 'Browse by tag')) + ' (' + tags.length + ')</summary>',
+      '        ' + tagChipsHtml(tags, fromDir, lang, null),
+      '      </details>'
+    ].join('\n') : '';
+
     var body = [
       nav,
       '<main>',
@@ -375,7 +385,7 @@
       '  </section>',
       '  <section style="border-top: none;">',
       '    <div class="container">',
-      tags.length ? '      ' + tagChipsHtml(tags, fromDir, lang, null) : '',
+      tagFilter,
       '      ' + grid,
       '    </div>',
       '  </section>',

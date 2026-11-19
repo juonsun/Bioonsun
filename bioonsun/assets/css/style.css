@@ -985,6 +985,31 @@ a.tag-chip:hover {
 }
 .tag-chip.is-static { cursor: default; }
 
+/* Collapsed "browse by tag" list on the blog index. */
+.tag-filter {
+  margin: 0 0 18px;
+}
+.tag-filter summary {
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  list-style: none;
+  padding: 4px 0;
+}
+.tag-filter summary::-webkit-details-marker { display: none; }
+.tag-filter summary::before {
+  content: "+";
+  display: inline-block;
+  width: 18px;
+  color: var(--color-primary);
+  font-weight: 800;
+}
+.tag-filter[open] summary::before { content: "\2212"; }
+.tag-filter summary:hover { color: var(--color-primary-dark); }
+.tag-filter .tag-chip-list { margin-top: 8px; }
+
 .blog-toolbar {
   display: flex;
   align-items: center;
